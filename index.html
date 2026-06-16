@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,16 +57,19 @@
     .map-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem; }
     .map-card{ background:var(--surface); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow); transition:0.25s ease; }
     .map-card:hover{ transform:translateY(-6px); }
-    .map-image{ height:260px; background:linear-gradient(135deg,#dbeafe,#eff6ff); display:flex; align-items:center; justify-content:center; color:#64748b; font-weight:600; font-size:1rem; border-bottom:1px solid var(--border); }
+    .map-image{ height:260px; background:linear-gradient(135deg,#dbeafe,#eff6ff); display:flex; align-items:center; justify-content:center; color:#64748b; font-weight:600; font-size:1rem; border-bottom:1px solid var(--border); overflow:hidden; }
+    .map-image iframe{ width:100%; height:100%; border:none; display:block; }
     .map-content{ padding:1.6rem; }
     .map-content h3{ margin-bottom:0.7rem; font-size:1.15rem; }
     .map-content p{ color:var(--muted); font-size:0.95rem; }
+    .map-link{ display:inline-block; margin-top:1rem; font-weight:600; font-size:0.9rem; }
 
     .skills{ display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1.5rem; }
     .skill{ padding:0.55rem 1rem; border-radius:999px; background:var(--accent-light); color:var(--accent); font-size:0.9rem; font-weight:500; }
 
     .about-box{ background:var(--surface); padding:2rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); }
     .about-box p{ color:var(--muted); }
+    .about-box p + p{ margin-top:1rem; }
 
     .contact-card{ background:var(--surface); padding:2rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); }
     .contact-card p{ margin-bottom:1rem; }
@@ -127,7 +131,7 @@
         <p>Background, interests, and what drives my work in GIS.</p>
       </div>
       <div class="about-box">
-        <p>I am a student at University College Utrecht (UCU), studying Geography and Environmental Science, with a minor in Data Analysis. The Geographical Information Systems Lab Course offered by UCU supports my education and professional development, and prepares me for my further studies and career. This portfolio showcases the projects I completed during this course.</p>
+        <p>I am a student at University College Utrecht (UCU), studying Cognitive Neuroscience and Chemistry. Taking the Geographical Information Systems Lab Course at UCU has pushed me well outside my usual coursework: I have learned to write Python and JavaScript to clean and visualize spatial data, build interactive web maps with libraries like Leaflet, and think more critically about how to communicate scientific findings visually. This portfolio showcases the projects I completed during this course.</p>
       </div>
     </div>
   </section>
@@ -141,13 +145,13 @@
       <div class="map-grid">
 
         <div class="map-card">
-          <div class="map-image"><a href="map.html" target="_blank" style="color:#64748b; font-weight:600;">
-  Open Interactive Map
-</a>
-</div>
+          <div class="map-image">
+            <iframe src="map.html" title="Where the World Drinks Safely — interactive map" loading="lazy"></iframe>
+          </div>
           <div class="map-content">
-            <h3>Project Title 1</h3>
-            <p>Short description of the project, methods used, and the purpose of the map.</p>
+            <h3>Where the World Drinks Safely — SDG 6.1.1</h3>
+            <p>This project involved creating a global choropleth map illustrating access to safely managed drinking water using the SDG 6.1.1 indicator. The workflow began in QGIS, where I joined national-level water access data to a country boundary shapefile, cleaned attribute fields, and applied a graduated color classification to highlight spatial disparities. After validating the symbology and attribute structure, the dataset was exported as GeoJSON for use in a web-mapping environment. The interactive version of the map was built using Leaflet.js, incorporating custom styling, pop-ups, and a legend to support interpretation. The purpose of this project is to visualize global inequalities in water security and demonstrate how GIS can support sustainability analysis and communication.</p>
+            <a class="map-link" href="maps/safewater-6-1-1.html" target="_blank" rel="noopener">Open full map →</a>
           </div>
         </div>
 
@@ -235,7 +239,7 @@
 
   <footer>
     <div class="container">
-      © 2026 Klara Tokatlian
+      ©️ 2026 Klara Tokatlian
     </div>
   </footer>
 
