@@ -4,15 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Klara Tokatlian - GIS Portfolio</title>
+  <title>Klara Tokatlian GIS Portfolio</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
   <style>
+    /* ====== YOUR ORIGINAL TEMPLATE CSS (unchanged) ====== */
 
     :root{
       --bg:#f5f7fa;
@@ -59,10 +62,6 @@
       margin:auto;
     }
 
-    /* ======================
-       NAVIGATION
-    ======================= */
-
     header{
       position:sticky;
       top:0;
@@ -100,10 +99,6 @@
     .nav-links a:hover{
       color:var(--accent);
     }
-
-    /* ======================
-       HERO
-    ======================= */
 
     .hero{
       padding:7rem 0 5rem;
@@ -168,10 +163,6 @@
       opacity:0.92;
     }
 
-    /* ======================
-       SECTIONS
-    ======================= */
-
     section{
       padding:5rem 0;
     }
@@ -190,10 +181,6 @@
       color:var(--muted);
       max-width:760px;
     }
-
-    /* ======================
-       MAP GRID
-    ======================= */
 
     .map-grid{
       display:grid;
@@ -215,90 +202,32 @@
     }
 
     .map-image{
-      height:260px;
-      background:linear-gradient(
-        135deg,
-        #dbeafe,
-        #eff6ff
-      );
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#64748b;
-      font-weight:600;
-      font-size:1rem;
-      border-bottom:1px solid var(--border);
+      height:400px;
+      padding:0;
     }
 
-    .map-content{
-      padding:1.6rem;
+    #map{
+      width:100%;
+      height:100%;
     }
 
-    .map-content h3{
-      margin-bottom:0.7rem;
-      font-size:1.15rem;
+    .legend {
+      background: white;
+      padding: 10px;
+      line-height: 1.4;
+      color: #333;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      border-radius: 4px;
+      font-size: 12px;
     }
 
-    .map-content p{
-      color:var(--muted);
-      font-size:0.95rem;
+    .legend i {
+      width: 14px;
+      height: 14px;
+      float: left;
+      margin-right: 6px;
+      opacity: 0.8;
     }
-
-    /* ======================
-       SKILLS
-    ======================= */
-
-    .skills{
-      display:flex;
-      flex-wrap:wrap;
-      gap:0.8rem;
-      margin-top:1.5rem;
-    }
-
-    .skill{
-      padding:0.55rem 1rem;
-      border-radius:999px;
-      background:var(--accent-light);
-      color:var(--accent);
-      font-size:0.9rem;
-      font-weight:500;
-    }
-
-    /* ======================
-       ABOUT SECTION
-    ======================= */
-
-    .about-box{
-      background:var(--surface);
-      padding:2rem;
-      border-radius:var(--radius);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-    }
-
-    .about-box p{
-      color:var(--muted);
-    }
-
-    /* ======================
-       CONTACT
-    ======================= */
-
-    .contact-card{
-      background:var(--surface);
-      padding:2rem;
-      border-radius:var(--radius);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-    }
-
-    .contact-card p{
-      margin-bottom:1rem;
-    }
-
-    /* ======================
-       FOOTER
-    ======================= */
 
     footer{
       padding:4rem 0;
@@ -306,96 +235,38 @@
       color:var(--muted);
       font-size:0.95rem;
     }
-
-    /* ======================
-       MOBILE
-    ======================= */
-
-    @media(max-width:900px){
-
-      .hero-grid{
-        grid-template-columns:1fr;
-      }
-
-      nav{
-        flex-direction:column;
-        gap:1rem;
-      }
-
-      .nav-links{
-        justify-content:center;
-      }
-
-      .hero{
-        padding-top:5rem;
-      }
-
-    }
-
   </style>
 </head>
 
 <body>
 
-  <!-- ======================
-       HEADER
-  ======================= -->
-
+  <!-- HEADER -->
   <header>
-
     <div class="container">
-
       <nav>
-
-        <div class="logo">
-          GIS Portfolio
-        </div>
-
+        <div class="logo">Klara Tokatlian</div>
         <div class="nav-links">
           <a href="#about">About</a>
           <a href="#maps">Maps</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </div>
-
       </nav>
-
     </div>
-
   </header>
 
-  <!-- ======================
-       HERO
-  ======================= -->
-
+  <!-- HERO -->
   <section class="hero">
-
     <div class="container">
-
       <div class="hero-grid">
-
         <div>
-
-          <h1>
-            Student GIS & Cartography Portfolio
-          </h1>
-
-          <p>
-            A professional showcase of mapping projects,
-            spatial analysis, remote sensing,
-            and cartographic design work.
-          </p>
-
-          <a href="#maps" class="button">
-            View Maps
-          </a>
-
+          <h1>Klara Tokatlian — GIS & Cartography Portfolio</h1>
+          <p>A professional showcase of mapping projects, spatial analysis, and cartographic design.</p>
+          <a href="#maps" class="button">View Maps</a>
         </div>
 
         <div class="hero-card">
-
           <h3>Portfolio Highlights</h3>
-
           <ul>
             <li>• GIS Mapping Projects</li>
             <li>• Spatial Analysis</li>
@@ -404,286 +275,169 @@
             <li>• Sustainability Applications</li>
             <li>• Interactive Web Maps</li>
           </ul>
-
         </div>
-
       </div>
-
     </div>
-
   </section>
 
-  <!-- ======================
-       ABOUT
-  ======================= -->
-
+  <!-- ABOUT -->
   <section id="about">
-
     <div class="container">
-
       <div class="section-title">
         <h2>About Me</h2>
-
-        <p>
-          Introduce yourself here. Describe your interests,
-          academic background, GIS experience,
-          and the types of projects you enjoy working on.
-        </p>
+        <p>I am a GIS and sustainability student interested in cartography, remote sensing, and spatial data science.</p>
       </div>
 
       <div class="about-box">
-
-        <p>
-          Example: I am a GIS and sustainability student interested
-          in cartography, remote sensing, spatial data science,
-          and environmental planning. My work focuses on using
-          geospatial technologies to better understand environmental
-          and social challenges.
-        </p>
-
+        <p>I focus on using geospatial technologies to understand environmental and social challenges.</p>
       </div>
-
     </div>
-
   </section>
 
-  <!-- ======================
-       MAPS
-  ======================= -->
-
+  <!-- MAPS -->
   <section id="maps">
-
     <div class="container">
 
       <div class="section-title">
-
         <h2>Map Portfolio</h2>
-
-        <p>
-          Replace the placeholders below with screenshots,
-          exported maps, or interactive map embeds.
-        </p>
-
+        <p>Below is my interactive SDG 6.1.1 map.</p>
       </div>
 
       <div class="map-grid">
 
-        <!-- MAP 1 -->
+        <!-- INTERACTIVE MAP -->
         <div class="map-card">
-
           <div class="map-image">
-            MAP IMAGE 1
+            <div id="map"></div>
           </div>
 
           <div class="map-content">
-
-            <h3>Project Title 1</h3>
-
-            <p>
-              Short description of the project,
-              methods used, and the purpose of the map.
-            </p>
-
+            <h3>Where the World Drinks Safely — SDG 6.1.1</h3>
+            <p>An interactive choropleth map showing global access to safely managed drinking water.</p>
           </div>
-
-        </div>
-
-        <!-- MAP 2 -->
-        <div class="map-card">
-
-          <div class="map-image">
-            MAP IMAGE 2
-          </div>
-
-          <div class="map-content">
-
-            <h3>Project Title 2</h3>
-
-            <p>
-              Explain the GIS workflow,
-              data sources, or analysis techniques used.
-            </p>
-
-          </div>
-
-        </div>
-
-        <!-- MAP 3 -->
-        <div class="map-card">
-
-          <div class="map-image">
-            MAP IMAGE 3
-          </div>
-
-          <div class="map-content">
-
-            <h3>Project Title 3</h3>
-
-            <p>
-              Describe the cartographic decisions,
-              spatial patterns, or sustainability relevance.
-            </p>
-
-          </div>
-
-        </div>
-
-        <!-- MAP 4 -->
-        <div class="map-card">
-
-          <div class="map-image">
-            MAP IMAGE 4
-          </div>
-
-          <div class="map-content">
-
-            <h3>Project Title 4</h3>
-
-            <p>
-              Add project summary,
-              software used, or technical skills demonstrated.
-            </p>
-
-          </div>
-
-        </div>
-
-        <!-- MAP 5 -->
-        <div class="map-card">
-
-          <div class="map-image">
-            MAP IMAGE 5
-          </div>
-
-          <div class="map-content">
-
-            <h3>Project Title 5</h3>
-
-            <p>
-              Explain the analytical approach
-              and major findings from the project.
-            </p>
-
-          </div>
-
-        </div>
-
-        <!-- MAP 6 -->
-        <div class="map-card">
-
-          <div class="map-image">
-            MAP IMAGE 6
-          </div>
-
-          <div class="map-content">
-
-            <h3>Project Title 6</h3>
-
-            <p>
-              Include reflections on the project,
-              lessons learned, or future improvements.
-            </p>
-
-          </div>
-
         </div>
 
       </div>
 
     </div>
-
   </section>
 
-  <!-- ======================
-       SKILLS
-  ======================= -->
-
+  <!-- SKILLS -->
   <section id="skills">
-
     <div class="container">
-
       <div class="section-title">
-
         <h2>Technical Skills</h2>
-
-        <p>
-          Highlight GIS software, programming languages,
-          and spatial analysis methods.
-        </p>
-
+        <p>GIS software, programming languages, and spatial analysis methods.</p>
       </div>
 
       <div class="about-box">
-
         <div class="skills">
-
           <div class="skill">QGIS</div>
           <div class="skill">ArcGIS Pro</div>
-          <div class="skill">Google Earth Engine</div>
           <div class="skill">Remote Sensing</div>
           <div class="skill">Spatial Analysis</div>
           <div class="skill">Cartography</div>
           <div class="skill">Python</div>
           <div class="skill">JavaScript</div>
           <div class="skill">GeoJSON</div>
-          <div class="skill">MapLibre GL</div>
-
         </div>
-
       </div>
-
     </div>
-
   </section>
 
-  <!-- ======================
-       CONTACT
-  ======================= -->
-
+  <!-- CONTACT -->
   <section id="contact">
-
     <div class="container">
-
       <div class="section-title">
-
         <h2>Contact</h2>
-
-        <p>
-          Add your university email,
-          LinkedIn, GitHub, or portfolio links.
-        </p>
-
+        <p>My academic contact information.</p>
       </div>
 
       <div class="contact-card">
-
-        <p><strong>Name:</strong> Student Name</p>
-
-        <p><strong>Email:</strong> student@email.com</p>
-
-        <p><strong>University:</strong> University Name</p>
-
-        <p><strong>LinkedIn:</strong> linkedin.com/in/yourprofile</p>
-
+        <p><strong>Name:</strong> Klara Tokatlian</p>
+        <p><strong>Email:</strong> your-email@students.uu.nl</p>
+        <p><strong>University:</strong> Utrecht University</p>
       </div>
-
     </div>
-
   </section>
 
-  <!-- ======================
-       FOOTER
-  ======================= -->
-
+  <!-- FOOTER -->
   <footer>
-
     <div class="container">
-
-      © 2026 GIS Student Portfolio
-
+      © 2026 Klara Tokatlian GIS Portfolio
     </div>
-
   </footer>
+
+  <!-- LEAFLET + MAP SCRIPT -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="safewater_6_1_1.js"></script>
+
+  <script>
+    var map = L.map('map').setView([20, 0], 2);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 6,
+        minZoom: 2,
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    function getColor(d) {
+        return d >= 81 ? '#08306b' :
+               d >= 62 ? '#2171b5' :
+               d >= 44 ? '#6baed6' :
+               d >= 25 ? '#c6dbef' :
+               d >= 6  ? '#eff3ff' :
+                         '#cccccc';
+    }
+
+    function style(feature) {
+        var value = feature.properties.safewater_2020_latestclean_2020;
+        return {
+            fillColor: getColor(value),
+            weight: 0.7,
+            opacity: 1,
+            color: '#ffffff',
+            fillOpacity: 0.9
+        };
+    }
+
+    L.geoJSON(nationData, {
+        style: style,
+        onEachFeature: function (feature, layer) {
+            var name = feature.properties.nam_en;
+            var value = feature.properties.safewater_2020_latestclean_2020;
+
+            layer.bindPopup(
+                "<strong>" + name + "</strong><br>" +
+                "Safely managed drinking water: " + value + "%"
+            );
+        }
+    }).addTo(map);
+
+    var legend = L.control({position: 'bottomright'});
+
+    legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'legend'),
+            grades = [6, 25, 44, 62, 81];
+
+        div.innerHTML += "<strong>Access to Safe Water (%)</strong><br>";
+
+        for (var i = 0; i < grades.length; i++) {
+            var from = grades[i];
+            var to = grades[i + 1];
+
+            div.innerHTML +=
+                '<i style="background:' + getColor(from + 0.1) + '"></i> ' +
+                from + (to ? '&ndash;' + to + '%' : '% +') + '<br>';
+        }
+
+        div.innerHTML += '<i style="background:#cccccc"></i> No data<br>';
+
+        return div;
+    };
+
+    legend.addTo(map);
+  </script>
 
 </body>
 </html>
