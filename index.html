@@ -4,25 +4,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>Klara Tokatlian — GIS Portfolio</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
     :root{
       --bg:#f5f7fa;
       --surface:#ffffff;
       --text:#1f2937;
       --muted:#6b7280;
-      --accent:#2563eb;
+      --accent:#191970;
       --accent-light:#dbeafe;
       --border:#e5e7eb;
       --shadow:0 10px 28px rgba(0,0,0,0.06);
       --radius:20px;
       --max-width:1240px;
+      --heading-blue:#008092;
     }
     *{ margin:0; padding:0; box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
@@ -30,60 +28,92 @@
     img{ max-width:100%; display:block; }
     a{ text-decoration:none; color:var(--accent); }
     .container{ width:min(92%, var(--max-width)); margin:auto; }
-
     header{ position:sticky; top:0; z-index:1000; background:rgba(255,255,255,0.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
     nav{ display:flex; justify-content:space-between; align-items:center; padding:1rem 0; }
-    .logo{ font-weight:700; font-size:1.1rem; letter-spacing:0.02em; }
+    .logo{ font-weight:700; font-size:1.1rem; letter-spacing:0.02em; color:var(--heading-blue); }
     .nav-links{ display:flex; gap:1.5rem; flex-wrap:wrap; }
     .nav-links a{ color:var(--muted); font-size:0.95rem; transition:0.2s ease; }
-    .nav-links a:hover{ color:var(--accent); }
-
+    .nav-links a:hover{ color:var(--heading-blue); }
     .hero{ padding:7rem 0 5rem; }
-    .hero-grid{ display:grid; grid-template-columns:1.2fr 0.8fr; gap:3rem; align-items:center; }
-    .hero h1{ font-family:'Merriweather',serif; font-size:clamp(2.5rem,6vw,5rem); line-height:1.1; margin-bottom:1.3rem; }
+    .hero h1{ font-family:'Merriweather',serif; font-size:clamp(2.5rem,6vw,5rem); line-height:1.1; margin-bottom:1.3rem; color:var(--heading-blue); }
     .hero p{ color:var(--muted); max-width:700px; font-size:1.1rem; }
-    .hero-card{ background:var(--surface); border-radius:var(--radius); padding:2rem; box-shadow:var(--shadow); border:1px solid var(--border); }
-    .hero-card h3{ margin-bottom:1rem; font-size:1.1rem; }
+    .hero-card{ background:var(--surface); border-radius:var(--radius); padding:2rem; box-shadow:var(--shadow); border:1px solid var(--border); margin-top:3rem; }
+    .hero-card h3{ margin-bottom:1rem; font-size:1.1rem; color:var(--heading-blue); }
     .hero-card ul{ list-style:none; display:grid; gap:0.8rem; }
     .hero-card li{ color:var(--muted); font-size:0.96rem; }
     .button{ display:inline-block; margin-top:2rem; padding:0.95rem 1.5rem; border-radius:999px; background:var(--accent); color:white; font-weight:600; transition:0.2s ease; }
     .button:hover{ opacity:0.92; }
-
     section{ padding:5rem 0; }
     .section-title{ margin-bottom:2.5rem; }
-    .section-title h2{ font-size:2rem; margin-bottom:0.8rem; font-family:'Merriweather',serif; }
+    .section-title h2{ font-size:2rem; margin-bottom:0.8rem; font-family:'Merriweather',serif; color:var(--heading-blue); }
     .section-title p{ color:var(--muted); max-width:760px; }
 
-    .map-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem; }
-    .map-card{ background:var(--surface); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow); transition:0.25s ease; }
-    .map-card:hover{ transform:translateY(-6px); }
-    .map-image{ height:260px; background:linear-gradient(135deg,#dbeafe,#eff6ff); display:flex; align-items:center; justify-content:center; color:#64748b; font-weight:600; font-size:1rem; border-bottom:1px solid var(--border); }
+    /* ====== MAP GRID ====== */
+    .map-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:2rem;
+    }
+    .map-card{
+      background:var(--surface);
+      border-radius:var(--radius);
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      transition:0.25s ease;
+    }
+    .map-card:hover{
+      transform:translateY(-6px);
+    }
+
+    /* Featured card spans full width */
+    .map-card.featured{
+      grid-column:1 / -1;
+    }
+
+    .map-image{
+      height:260px;
+      background:linear-gradient(135deg,#dbeafe,#eff6ff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#64748b;
+      font-weight:600;
+      font-size:1rem;
+      border-bottom:1px solid var(--border);
+    }
+
+    /* Interactive map embed — elongated, fits the featured card nicely */
+    .map-embed{
+      width:100%;
+      height:350px;
+      border:none;
+      display:block;
+      border-bottom:1px solid var(--border);
+    }
+
     .map-content{ padding:1.6rem; }
-    .map-content h3{ margin-bottom:0.7rem; font-size:1.15rem; }
+    .map-content h3{ margin-bottom:0.7rem; font-size:1.15rem; color:var(--heading-blue); }
     .map-content p{ color:var(--muted); font-size:0.95rem; }
+    .map-link{ display:inline-block; margin-top:1rem; font-weight:600; font-size:0.9rem; color:var(--heading-blue); }
 
     .skills{ display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1.5rem; }
-    .skill{ padding:0.55rem 1rem; border-radius:999px; background:var(--accent-light); color:var(--accent); font-size:0.9rem; font-weight:500; }
-
+    .skill{ padding:0.55rem 1rem; border-radius:999px; background:var(--accent-light); color:var(--heading-blue); font-size:0.9rem; font-weight:500; }
     .about-box{ background:var(--surface); padding:2rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); }
     .about-box p{ color:var(--muted); }
-
+    .about-box p + p{ margin-top:1rem; }
     .contact-card{ background:var(--surface); padding:2rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); }
     .contact-card p{ margin-bottom:1rem; }
-
     footer{ padding:4rem 0; text-align:center; color:var(--muted); font-size:0.95rem; }
-
     @media(max-width:900px){
-      .hero-grid{ grid-template-columns:1fr; }
       nav{ flex-direction:column; gap:1rem; }
       .nav-links{ justify-content:center; }
       .hero{ padding-top:5rem; }
+      .map-embed{ height:460px; }
     }
   </style>
 </head>
-
 <body>
-
   <header>
     <div class="container">
       <nav>
@@ -97,30 +127,26 @@
       </nav>
     </div>
   </header>
-
   <section class="hero">
     <div class="container">
-      <div class="hero-grid">
-        <div>
-          <h1>GIS &amp; Cartography Portfolio</h1>
-          <p>A showcase of mapping projects, spatial analysis, and cartographic design work from my studies at Utrecht University.</p>
-          <a href="#maps" class="button">View Maps</a>
-        </div>
-        <div class="hero-card">
-          <h3>Portfolio Highlights</h3>
-          <ul>
-            <li>• GIS Mapping Projects</li>
-            <li>• Spatial Analysis</li>
-            <li>• Remote Sensing</li>
-            <li>• Cartographic Design</li>
-            <li>• Sustainability Applications</li>
-            <li>• Interactive Web Maps</li>
-          </ul>
-        </div>
+      <div>
+        <h1>GIS &amp; Cartography Portfolio</h1>
+        <p>A showcase of mapping projects, spatial analysis, and cartographic design work from my studies at Utrecht University.</p>
+        <a href="#maps" class="button">View Maps</a>
+      </div>
+      <div class="hero-card">
+        <h3>Portfolio Highlights</h3>
+        <ul>
+          <li>• GIS Mapping Projects</li>
+          <li>• Spatial Analysis</li>
+          <li>• Remote Sensing</li>
+          <li>• Cartographic Design</li>
+          <li>• Sustainability Applications</li>
+          <li>• Interactive Web Maps</li>
+        </ul>
       </div>
     </div>
   </section>
-
   <section id="about">
     <div class="container">
       <div class="section-title">
@@ -128,30 +154,53 @@
         <p>Background, interests, and what drives my work in GIS.</p>
       </div>
       <div class="about-box">
-        <p>I am a student at University College Utrecht (UCU), studying Geography and Environmental Science, with a minor in Data Analysis. The Geographical Information Systems Lab Course offered by UCU supports my education and professional development, and prepares me for my further studies and career. This portfolio showcases the projects I completed during this course.</p>
+        <p>I am a student at University College Utrecht (UCU), studying Cognitive Neuroscience and Chemistry. Taking the Geographical Information Systems Lab Course at UCU has pushed me well outside my usual coursework: I have learned to write Python and JavaScript to clean and visualize spatial data, build interactive web maps with libraries like Leaflet, and think more critically about how to communicate scientific findings visually. This portfolio showcases the projects I completed during this course.</p>
       </div>
     </div>
   </section>
 
+  <!-- ======================
+       MAPS
+  ======================= -->
   <section id="maps">
     <div class="container">
+
       <div class="section-title">
         <h2>Map Portfolio</h2>
         <p>A selection of mapping and spatial analysis projects.</p>
       </div>
+
       <div class="map-grid">
 
-        <div class="map-card">
-          <div class="map-image"><a href="map.html" target="_blank" style="color:#64748b; font-weight:600;">
-  Open Interactive Map
-</a>
-</div>
+        <!-- MAP 1 — Interactive choropleth (featured, full width) -->
+        <div class="map-card featured">
+
+          <iframe
+            class="map-embed"
+            src="map.html"
+            title="SDG 6.1.1 Where the World Drinks Safely Interactive Map"
+            loading="lazy"
+          ></iframe>
+
           <div class="map-content">
-            <h3>Project Title 1</h3>
-            <p>Short description of the project, methods used, and the purpose of the map.</p>
+            <h3>Where the World Drinks Safely — SDG 6.1.1</h3>
+            <p>
+              This project involved creating a global choropleth map illustrating access to safely managed
+              drinking water using the SDG 6.1.1 indicator. The workflow began in QGIS, where I joined
+              national-level water access data to a country boundary shapefile, cleaned attribute fields,
+              and applied a graduated color classification to highlight spatial disparities. After validating
+              the symbology and attribute structure, the dataset was exported as GeoJSON for use in a
+              web-mapping environment. The interactive version of the map was built using Leaflet.js,
+              incorporating custom styling, pop-ups, and a legend to support interpretation. The purpose
+              of this project is to visualize global inequalities in water security and demonstrate how
+              GIS can support sustainability analysis and communication.
+            </p>
+            <a href="map.html" target="_blank">Open full map ↗</a>
           </div>
+
         </div>
 
+        <!-- MAP 2 -->
         <div class="map-card">
           <div class="map-image">MAP IMAGE 2</div>
           <div class="map-content">
@@ -160,6 +209,7 @@
           </div>
         </div>
 
+        <!-- MAP 3 -->
         <div class="map-card">
           <div class="map-image">MAP IMAGE 3</div>
           <div class="map-content">
@@ -168,6 +218,7 @@
           </div>
         </div>
 
+        <!-- MAP 4 -->
         <div class="map-card">
           <div class="map-image">MAP IMAGE 4</div>
           <div class="map-content">
@@ -176,6 +227,7 @@
           </div>
         </div>
 
+        <!-- MAP 5 -->
         <div class="map-card">
           <div class="map-image">MAP IMAGE 5</div>
           <div class="map-content">
@@ -184,6 +236,7 @@
           </div>
         </div>
 
+        <!-- MAP 6 -->
         <div class="map-card">
           <div class="map-image">MAP IMAGE 6</div>
           <div class="map-content">
@@ -193,6 +246,7 @@
         </div>
 
       </div>
+
     </div>
   </section>
 
@@ -218,7 +272,6 @@
       </div>
     </div>
   </section>
-
   <section id="contact">
     <div class="container">
       <div class="section-title">
@@ -228,17 +281,15 @@
       <div class="contact-card">
         <p><strong>Name:</strong> Klara Tokatlian</p>
         <p><strong>Email:</strong> <a href="mailto:k.e.tokatliansjolander@students.uu.nl">k.e.tokatliansjolander@students.uu.nl</a></p>
-        <p><strong>University:</strong> Utrecht University</p>
+        <p><strong>University:</strong> University College Utrecht</p>
         <p><strong>GitHub:</strong> <a href="https://github.com/klaraelina" target="_blank" rel="noopener">github.com/klaraelina</a></p>
       </div>
     </div>
   </section>
-
   <footer>
     <div class="container">
-      © 2026 Klara Tokatlian
+      ©️ 2026 Klara Tokatlian
     </div>
   </footer>
-
 </body>
 </html>
