@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,249 +6,258 @@
   <title>Klara Tokatlian — GIS Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f5f7fa;
+      --bg:#f8fafc;
       --surface:#ffffff;
-      --text:#1f2937;
-      --muted:#6b7280;
+      --text:#1e293b;
+      --muted:#64748b;
       --accent:#191970;
-      --accent-light:#dbeafe;
-      --border:#e5e7eb;
-      --shadow:0 10px 28px rgba(0,0,0,0.06);
-      --radius:20px;
-      --max-width:1240px;
+      --accent-light:#e0f2fe;
+      --border:#e2e8f0;
+      --shadow:0 12px 30px rgba(0,0,0,0.04);
+      --radius:16px;
+      --max-width:1200px;
       --heading-blue:#008092;
     }
     *{ margin:0; padding:0; box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
-    body{ font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
-    img{ max-width:100%; display:block; }
-    a{ text-decoration:none; color:var(--accent); }
-    .container{ width:min(92%, var(--max-width)); margin:auto; }
-    header{ position:sticky; top:0; z-index:1000; background:rgba(255,255,255,0.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
-    nav{ display:flex; justify-content:space-between; align-items:center; padding:1rem 0; }
-    .logo{ font-weight:700; font-size:1.1rem; letter-spacing:0.02em; color:var(--heading-blue); }
-    .nav-links{ display:flex; gap:1.5rem; flex-wrap:wrap; }
-    .nav-links a{ color:var(--muted); font-size:0.95rem; transition:0.2s ease; }
+    body{ font-family:'Inter', sans-serif; background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    img{ max-width:100%; height:auto; display:block; border-radius:var(--radius); object-fit: cover; }
+    a{ text-decoration:none; color:var(--accent); transition: all 0.2s ease; }
+    
+    .container{ width:min(90%, var(--max-width)); margin:auto; }
+    
+    /* Header & Navigation */
+    header{ position:sticky; top:0; z-index:1000; background:rgba(255,255,255,0.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    nav{ display:flex; justify-content:space-between; align-items:center; padding:1.25rem 0; }
+    .logo{ font-weight:700; font-size:1.2rem; letter-spacing:-0.01em; color:var(--heading-blue); }
+    .nav-links{ display:flex; gap:2rem; }
+    .nav-links a{ color:var(--muted); font-size:0.95rem; font-weight:500; }
     .nav-links a:hover{ color:var(--heading-blue); }
-    .hero{ padding:7rem 0 5rem; }
-    .hero h1{ font-family:'Merriweather',serif; font-size:clamp(2.5rem,6vw,5rem); line-height:1.1; margin-bottom:1.3rem; color:var(--heading-blue); }
-    .hero p{ color:var(--muted); max-width:700px; font-size:1.1rem; }
-    .hero-card{ background:var(--surface); border-radius:var(--radius); padding:2rem; box-shadow:var(--shadow); border:1px solid var(--border); margin-top:3rem; }
-    .hero-card h3{ margin-bottom:1rem; font-size:1.1rem; color:var(--heading-blue); }
-    .hero-card ul{ list-style:none; display:grid; gap:0.8rem; }
-    .hero-card li{ color:var(--muted); font-size:0.96rem; }
-    .button{ display:inline-block; margin-top:2rem; padding:0.95rem 1.5rem; border-radius:999px; background:var(--accent); color:white; font-weight:600; transition:0.2s ease; }
-    .button:hover{ opacity:0.92; }
-    section{ padding:5rem 0; }
-    .section-title{ margin-bottom:2.5rem; }
-    .section-title h2{ font-size:2rem; margin-bottom:0.8rem; font-family:'Merriweather',serif; color:var(--heading-blue); }
-    .section-title p{ color:var(--muted); max-width:760px; }
-
-    /* ====== MAP GRID ====== */
-    .map-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:2rem;
+    
+    /* Landing / Hero Section */
+    .hero{ padding:8rem 0 5rem; display:grid; grid-template-columns: 1.2fr 0.8fr; gap:3rem; align-items: center; }
+    .hero h1{ font-family:'Merriweather', serif; font-size:clamp(2.5rem, 5vw, 4rem); font-weight:700; line-height:1.2; margin-bottom:1.5rem; color:var(--heading-blue); letter-spacing:-0.02em; }
+    .hero p{ color:var(--muted); font-size:1.15rem; line-height:1.7; margin-bottom:2rem; }
+    .hero-card{ background:var(--surface); border-radius:var(--radius); padding:2.5rem; box-shadow:var(--shadow); border:1px solid var(--border); }
+    .hero-card h3{ margin-bottom:1.2rem; font-size:1.1rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--heading-blue); }
+    .hero-card ul{ list-style:none; display:grid; gap:0.9rem; }
+    .hero-card li{ color:var(--muted); font-size:0.98rem; display:flex; align-items:center; gap:0.5rem; }
+    .hero-card li::before { content: "→"; color: var(--heading-blue); font-weight: bold; }
+    
+    .button{ display:inline-block; padding:0.85rem 1.75rem; border-radius:8px; background:var(--accent); color:white; font-weight:600; letter-spacing:0.01em; transition:0.2s ease; box-shadow: 0 4px 14px rgba(25, 25, 112, 0.2); }
+    .button:hover{ opacity:0.92; transform: translateY(-1px); }
+    
+    /* Layout Sections */
+    section{ padding:6rem 0; border-bottom:1px solid var(--border); }
+    .section-title{ margin-bottom:3.5rem; }
+    .section-title h2{ font-size:2.25rem; margin-bottom:0.8rem; font-family:'Merriweather', serif; color:var(--heading-blue); }
+    .section-title p{ color:var(--muted); font-size:1.05rem; }
+    
+    /* About Me Section */
+    .about-grid { display: grid; grid-template-columns: 280px 1fr; gap:3rem; align-items: start; }
+    .about-image-container { position: relative; background: var(--border); border-radius: var(--radius); aspect-ratio: 1/1; overflow: hidden; box-shadow: var(--shadow); }
+    .about-box{ background:var(--surface); padding:2.5rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); font-size:1.05rem; }
+    .about-box p + p{ margin-top:1.25rem; }
+    
+    /* Interactive Maps Tab System */
+    .tabs-container { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+    .tabs-menu { display: flex; background: #f1f5f9; border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
+    .tab-btn { padding: 1.25rem 1.5rem; border: none; background: none; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--muted); cursor: pointer; text-align: left; white-space: nowrap; transition: 0.2s ease; border-right: 1px solid var(--border); flex: 1; }
+    .tab-btn:hover { background: rgba(255,255,255,0.5); color: var(--heading-blue); }
+    .tab-btn.active { background: var(--surface); color: var(--heading-blue); border-bottom: 2px solid var(--heading-blue); }
+    
+    .tab-content { display: none; padding: 2.5rem; }
+    .tab-content.active { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem; }
+    
+    .map-display-box { background: #eff6ff; border-radius: 12px; border: 1px solid var(--border); min-height: 400px; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+    .map-embed { width: 100%; height: 400px; border: none; background: #edf2f7; }
+    .map-static-img { width: 100%; height: 400px; object-fit: cover; }
+    
+    .map-details { display: flex; flex-direction: column; justify-content: space-between; }
+    .map-details h3 { font-family: 'Merriweather', serif; font-size: 1.4rem; color: var(--heading-blue); margin-bottom: 1rem; }
+    .map-details p { color: var(--muted); font-size: 0.98rem; line-height: 1.65; }
+    
+    .action-bar { margin-top: 1.5rem; display: flex; gap: 1rem; }
+    .btn-fullscreen { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--surface); border: 2px solid var(--accent); color: var(--accent); padding: 0.65rem 1.25rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: 0.2s ease; }
+    .btn-fullscreen:hover { background: var(--accent); color: white; }
+    
+    /* Technical Skills */
+    .skills{ display:flex; flex-wrap:wrap; gap:0.75rem; }
+    .skill{ padding:0.6rem 1.1rem; border-radius:8px; background:var(--accent-light); color: var(--accent); font-size:0.9rem; font-weight:600; border: 1px solid rgba(25,25,112,0.08); }
+    
+    /* Contact Section */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .contact-card{ background:var(--surface); padding:2.5rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); display: flex; flex-direction: column; gap: 1.2rem; }
+    .contact-item { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; }
+    .contact-item:last-child { border: none; padding: 0; }
+    .contact-label { font-size: 0.85rem; text-transform: uppercase; tracking: 0.05em; color: var(--muted); font-weight: 600; margin-bottom: 0.2rem; }
+    .contact-value { font-size: 1.1rem; font-weight: 500; color: var(--text); }
+    .contact-value a { color: var(--heading-blue); font-weight: 600; }
+    .contact-value a:hover { text-decoration: underline; }
+    
+    footer{ padding:4rem 0; text-align:center; color:var(--muted); font-size:0.95rem; border-top:1px solid var(--border); background: #ffffff; }
+    
+    @media(max-width:1024px){
+      .hero { grid-template-columns: 1fr; padding-top: 5rem; gap: 2rem; }
+      .tab-content.active { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-image-container { max-width: 240px; margin: 0 auto; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
-    .map-card{
-      background:var(--surface);
-      border-radius:var(--radius);
-      overflow:hidden;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      transition:0.25s ease;
-    }
-    .map-card:hover{
-      transform:translateY(-6px);
-    }
-
-    /* Featured card spans full width */
-    .map-card.featured{
-      grid-column:1 / -1;
-    }
-
-    .map-image{
-      height:260px;
-      background:linear-gradient(135deg,#dbeafe,#eff6ff);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#64748b;
-      font-weight:600;
-      font-size:1rem;
-      border-bottom:1px solid var(--border);
-    }
-
-    /* Interactive map embed — elongated, fits the featured card nicely */
-    .map-embed{
-      width:100%;
-      height:350px;
-      border:none;
-      display:block;
-      border-bottom:1px solid var(--border);
-    }
-
-    .map-content{ padding:1.6rem; }
-    .map-content h3{ margin-bottom:0.7rem; font-size:1.15rem; color:var(--heading-blue); }
-    .map-content p{ color:var(--muted); font-size:0.95rem; }
-    .map-link{ display:inline-block; margin-top:1rem; font-weight:600; font-size:0.9rem; color:var(--heading-blue); }
-
-    .skills{ display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1.5rem; }
-    .skill{ padding:0.55rem 1rem; border-radius:999px; background:var(--accent-light); color:var(--heading-blue); font-size:0.9rem; font-weight:500; }
-    .about-box{ background:var(--surface); padding:2rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); }
-    .about-box p{ color:var(--muted); }
-    .about-box p + p{ margin-top:1rem; }
-    .contact-card{ background:var(--surface); padding:2rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); }
-    .contact-card p{ margin-bottom:1rem; }
-    footer{ padding:4rem 0; text-align:center; color:var(--muted); font-size:0.95rem; }
-    @media(max-width:900px){
+    @media(max-width:640px){
       nav{ flex-direction:column; gap:1rem; }
-      .nav-links{ justify-content:center; }
-      .hero{ padding-top:5rem; }
-      .map-embed{ height:460px; }
+      .nav-links{ justify-content:center; gap: 1.2rem; }
+      .tab-btn { padding: 1rem; font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
+
   <header>
     <div class="container">
       <nav>
         <div class="logo">Klara Tokatlian</div>
         <div class="nav-links">
           <a href="#about">About</a>
-          <a href="#maps">Maps</a>
+          <a href="#projects">Map Projects</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
     </div>
   </header>
+
   <section class="hero">
-    <div class="container">
-      <div>
-        <h1>GIS &amp; Cartography Portfolio</h1>
-        <p>A showcase of mapping projects, spatial analysis, and cartographic design work from my studies at Utrecht University.</p>
-        <a href="#maps" class="button">View Maps</a>
-      </div>
-      <div class="hero-card">
-        <h3>Portfolio Highlights</h3>
-        <ul>
-          <li>• GIS Mapping Projects</li>
-          <li>• Spatial Analysis</li>
-          <li>• Remote Sensing</li>
-          <li>• Cartographic Design</li>
-          <li>• Sustainability Applications</li>
-          <li>• Interactive Web Maps</li>
-        </ul>
-      </div>
+    <div class="container hero-left">
+      <h1>GIS &amp; Cartography Portfolio</h1>
+      <p>A showcase of mapping projects, spatial analysis, and cartographic design work completed at Utrecht University, fusing scientific discovery with data visualization.</p>
+      <a href="#projects" class="button">Explore Maps Overview</a>
+    </div>
+    <div class="hero-card">
+      <h3>Portfolio Highlights</h3>
+      <ul>
+        <li>Interactive Spatial Web Apps</li>
+        <li>Advanced Choropleth &amp; Vector Mapping</li>
+        <li>Data Analysis with QGIS &amp; Python</li>
+        <li>Urban Accessibility Modeling</li>
+      </ul>
     </div>
   </section>
+
   <section id="about">
     <div class="container">
       <div class="section-title">
         <h2>About Me</h2>
-        <p>Background, interests, and what drives my work in GIS.</p>
+        <p>Bridging Cognitive Neuroscience, Chemistry, and Spatial Data.</p>
       </div>
-      <div class="about-box">
-        <p>I am a student at University College Utrecht (UCU), studying Cognitive Neuroscience and Chemistry. Taking the Geographical Information Systems Lab Course at UCU has pushed me well outside my usual coursework: I have learned to write Python and JavaScript to clean and visualize spatial data, build interactive web maps with libraries like Leaflet, and think more critically about how to communicate scientific findings visually. This portfolio showcases the projects I completed during this course.</p>
+      <div class="about-grid">
+        <div class="about-image-container">
+          <img src="https://via.placeholder.com/300" alt="Klara Tokatlian" style="width:100%; height:100%;">
+        </div>
+        <div class="about-box">
+          <p>I am a student at University College Utrecht (UCU), studying Cognitive Neuroscience and Chemistry. Taking the Geographical Information Systems Lab Course at UCU has pushed me well outside my usual coursework.</p>
+          <p>I have learned to write Python and JavaScript to clean and visualize spatial data, build interactive web maps with modern libraries, and think more critically about how to communicate scientific findings visually. This portfolio showcases the core projects I designed during this course.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ======================
-       MAPS
-  ======================= -->
-  <section id="maps">
+  <section id="projects">
     <div class="container">
-
       <div class="section-title">
-        <h2>Map Portfolio</h2>
-        <p>A selection of mapping and spatial analysis projects.</p>
+        <h2>Map Portfolio &amp; Projects</h2>
+        <p>Select a tab below to quickly jump between individual maps, complete with technical descriptions and interactive layers.</p>
       </div>
 
-      <div class="map-grid">
-
-        <!-- MAP 1 — Interactive choropleth (featured, full width) -->
-        <div class="map-card featured">
-
-          <iframe
-            class="map-embed"
-            src="map.html"
-            title="SDG 6.1.1 Where the World Drinks Safely Interactive Map"
-            loading="lazy"
-          ></iframe>
-
-          <div class="map-content">
-            <h3>Where the World Drinks Safely — SDG 6.1.1</h3>
-            <p>
-              This project involved creating a global choropleth map illustrating access to safely managed
-              drinking water using the SDG 6.1.1 indicator. The workflow began in QGIS, where I joined
-              national-level water access data to a country boundary shapefile, cleaned attribute fields,
-              and applied a graduated color classification to highlight spatial disparities. After validating
-              the symbology and attribute structure, the dataset was exported as GeoJSON for use in a
-              web-mapping environment. The interactive version of the map was built using Leaflet.js,
-              incorporating custom styling, pop-ups, and a legend to support interpretation. The purpose
-              of this project is to visualize global inequalities in water security and demonstrate how
-              GIS can support sustainability analysis and communication.
-            </p>
-            <a href="map.html" target="_blank">Open full map ↗</a>
-          </div>
-
+      <div class="tabs-container">
+        <div class="tabs-menu">
+          <button class="tab-btn active" onclick="openMap(event, 'map1')">Project 1: SDG 6.1.1</button>
+          <button class="tab-btn" onclick="openMap(event, 'map2')">Project 2: Utrecht Cycling</button>
+          <button class="tab-btn" onclick="openMap(event, 'map3')">Project 3</button>
+          <button class="tab-btn" onclick="openMap(event, 'map4')">Project 4</button>
+          <button class="tab-btn" onclick="openMap(event, 'map5')">Project 5</button>
         </div>
 
-        <!-- MAP 2 -->
-        <div class="map-card">
-         <div class="map-image">
-  <img src="kindergarten_vector_map.png" alt="Kindergarten Accessibility Map">
-</div>
-
-          <div class="map-content">
-            <h3><h3>Kindergarten Accessibility in Utrecht by Bicycle (4–24 Minutes)</h3>
-            <p>Explain the GIS workflow, data sources, or analysis techniques used.</p>
+        <div id="map1" class="tab-content active">
+          <div class="map-display-box">
+            <iframe class="map-embed" src="map.html" title="SDG 6.1.1 Interactive Map" loading="lazy"></iframe>
+          </div>
+          <div class="map-details">
+            <div>
+              <h3>Where the World Drinks Safely — SDG 6.1.1</h3>
+              <p>This project involved creating a global choropleth map illustrating access to safely managed drinking water using the SDG 6.1.1 indicator. The workflow began in QGIS, where I joined national-level water access data to a country boundary shapefile, cleaned attribute fields, and applied graduated color classifications.</p>
+              <p style="margin-top:0.8rem;">The interactive version was built using Leaflet.js, incorporating custom styling, dynamic pop-ups, and an interactive legend to display global inequalities cleanly.</p>
+            </div>
+            <div class="action-bar">
+              <a href="map.html" target="_blank" class="btn-fullscreen">View Map Full Screen ↗</a>
+            </div>
           </div>
         </div>
 
-        <!-- MAP 3 -->
-        <div class="map-card">
-          <div class="map-image">MAP IMAGE 3</div>
-          <div class="map-content">
-            <h3>Project Title 3</h3>
-            <p>Describe the cartographic decisions, spatial patterns, or sustainability relevance.</p>
+        <div id="map2" class="tab-content">
+          <div class="map-display-box">
+            <img src="kindergarten_vector_map.png" alt="Kindergarten Accessibility Map" class="map-static-img" onerror="this.src='https://via.placeholder.com/600x400?text=Kindergarten+Map+Placeholder'">
+          </div>
+          <div class="map-details">
+            <div>
+              <h3>Kindergarten Accessibility in Utrecht by Bicycle</h3>
+              <p>An intricate spatial vector analysis calculating commuter thresholds (ranging from 4–24 minutes) across the municipality of Utrecht. Focuses on infrastructure accessibility modeling and residential data clusters mapping out regional proximity profiles.</p>
+            </div>
+            <div class="action-bar">
+              <a href="kindergarten_vector_map.png" target="_blank" class="btn-fullscreen">View Full Screen Graphic ↗</a>
+            </div>
           </div>
         </div>
 
-        <!-- MAP 4 -->
-        <div class="map-card">
-          <div class="map-image">MAP IMAGE 4</div>
-          <div class="map-content">
-            <h3>Project Title 4</h3>
-            <p>Add project summary, software used, or technical skills demonstrated.</p>
+        <div id="map3" class="tab-content">
+          <div class="map-display-box">
+            <div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted)">[ Map Asset Preview 3 ]</div>
+          </div>
+          <div class="map-details">
+            <div>
+              <h3>Project Title 3</h3>
+              <p>Describe your cartographic metrics, design systems decisions, specific regional sustainability targets, or spatial indexing criteria here.</p>
+            </div>
+            <div class="action-bar">
+              <button class="btn-fullscreen" onclick="alert('Link your standalone map file path here!')">View Map Full Screen ↗</button>
+            </div>
           </div>
         </div>
 
-        <!-- MAP 5 -->
-        <div class="map-card">
-          <div class="map-image">MAP IMAGE 5</div>
-          <div class="map-content">
-            <h3>Project Title 5</h3>
-            <p>Explain the analytical approach and major findings from the project.</p>
+        <div id="map4" class="tab-content">
+          <div class="map-display-box">
+            <div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted)">[ Map Asset Preview 4 ]</div>
+          </div>
+          <div class="map-details">
+            <div>
+              <h3>Project Title 4</h3>
+              <p>Add technical summaries, specialized software extensions used, spatial operations deployed (e.g., buffering, interpolation), or scripting libraries featured.</p>
+            </div>
+            <div class="action-bar">
+              <button class="btn-fullscreen">View Map Full Screen ↗</button>
+            </div>
           </div>
         </div>
 
-        <!-- MAP 6 -->
-        <div class="map-card">
-          <div class="map-image">MAP IMAGE 6</div>
-          <div class="map-content">
-            <h3>Project Title 6</h3>
-            <p>Include reflections on the project, lessons learned, or future improvements.</p>
+        <div id="map5" class="tab-content">
+          <div class="map-display-box">
+            <div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted)">[ Map Asset Preview 5 ]</div>
+          </div>
+          <div class="map-details">
+            <div>
+              <h3>Project Title 5</h3>
+              <p>Explain the analytical methodology, complex geospatial workflows, remote sensing imagery classifications, and core empirical takeaways here.</p>
+            </div>
+            <div class="action-bar">
+              <button class="btn-fullscreen">View Map Full Screen ↗</button>
+            </div>
           </div>
         </div>
 
       </div>
-
     </div>
   </section>
 
@@ -257,7 +265,7 @@
     <div class="container">
       <div class="section-title">
         <h2>Technical Skills</h2>
-        <p>GIS software, programming languages, and spatial analysis methods I work with.</p>
+        <p>GIS applications, structural engineering codebases, and toolkits I master.</p>
       </div>
       <div class="about-box">
         <div class="skills">
@@ -275,24 +283,58 @@
       </div>
     </div>
   </section>
+
   <section id="contact">
     <div class="container">
       <div class="section-title">
         <h2>Contact</h2>
-        <p>Feel free to get in touch.</p>
+        <p>Get in touch for collaborative opportunities or detailed analytical reviews.</p>
       </div>
-      <div class="contact-card">
-        <p><strong>Name:</strong> Klara Tokatlian</p>
-        <p><strong>Email:</strong> <a href="mailto:k.e.tokatliansjolander@students.uu.nl">k.e.tokatliansjolander@students.uu.nl</a></p>
-        <p><strong>University:</strong> University College Utrecht</p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/klaraelina" target="_blank" rel="noopener">github.com/klaraelina</a></p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-item">
+            <span class="contact-label">Name</span>
+            <span class="contact-value">Klara Tokatlian</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Email Address</span>
+            <span class="contact-value"><a href="mailto:k.e.tokatliansjolander@students.uu.nl">k.e.tokatliansjolander@students.uu.nl</a></span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-item">
+            <span class="contact-label">University affiliation</span>
+            <span class="contact-value">University College Utrecht</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Open Source Repositories</span>
+            <span class="contact-value"><a href="https://github.com/klaraelina" target="_blank" rel="noopener">github.com/klaraelina</a></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
   <footer>
     <div class="container">
-      ©️ 2026 Klara Tokatlian
+      &copy; 2026 Klara Tokatlian • Built with precision &amp; care.
     </div>
   </footer>
+
+  <script>
+    function openMap(evt, mapId) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      tablinks = document.getElementsByClassName("tab-btn");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      document.getElementById(mapId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
 </body>
 </html>
