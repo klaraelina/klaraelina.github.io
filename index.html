@@ -42,7 +42,7 @@
     .hero h1{ font-family:'Merriweather', serif; font-size:clamp(2.5rem, 5vw, 4rem); font-weight:700; line-height:1.2; margin-bottom:1.5rem; color:var(--heading-blue); letter-spacing:-0.02em; }
     .hero p{ color:var(--muted); font-size:1.15rem; line-height:1.7; margin-bottom:2rem; }
     .hero-card{ background:var(--surface); border-radius:var(--radius); padding:2.5rem; box-shadow:var(--shadow); border:1px solid var(--border); }
-    .hero-card h3{ margin-bottom:1.2rem; font-size:1.1rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--heading-blue); }
+    .hero-card h3{ margin-bottom:12rem; font-size:1.1rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--heading-blue); margin-bottom:1.2rem; }
     .hero-card ul{ list-style:none; display:grid; gap:0.9rem; }
     .hero-card li{ color:var(--muted); font-size:0.98rem; display:flex; align-items:center; gap:0.5rem; }
     .hero-card li::before { content: "→"; color: var(--heading-blue); font-weight: bold; }
@@ -59,6 +59,7 @@
     /* About Me Section */
     .about-grid { display: grid; grid-template-columns: 280px 1fr; gap:3rem; align-items: start; }
     .about-image-container { position: relative; background: var(--border); border-radius: var(--radius); aspect-ratio: 1/1; overflow: hidden; box-shadow: var(--shadow); }
+    .about-image-container img { width: 100%; height: 100%; object-fit: cover; }
     .about-box{ background:var(--surface); padding:2.5rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); font-size:1.05rem; }
     .about-box p + p{ margin-top:1.25rem; }
     
@@ -155,7 +156,7 @@
       </div>
       <div class="about-grid">
         <div class="about-image-container">
-          <img src="https://via.placeholder.com/300" alt="Klara Tokatlian" style="width:100%; height:100%;">
+          <img src="me.jpeg" alt="Klara Tokatlian">
         </div>
         <div class="about-box">
           <p>I am a student at University College Utrecht (UCU), studying Cognitive Neuroscience and Chemistry. Taking the Geographical Information Systems Lab Course at UCU has pushed me well outside my usual coursework.</p>
@@ -176,7 +177,7 @@
         <div class="tabs-menu">
           <button class="tab-btn active" onclick="openMap(event, 'map1')">Project 1: SDG 6.1.1</button>
           <button class="tab-btn" onclick="openMap(event, 'map2')">Project 2: Utrecht Cycling</button>
-          <button class="tab-btn" onclick="openMap(event, 'map3')">Project 3</button>
+          <button class="tab-btn" onclick="openMap(event, 'map3')">Project 3: Flood Risk Analysis</button>
           <button class="tab-btn" onclick="openMap(event, 'map4')">Project 4</button>
           <button class="tab-btn" onclick="openMap(event, 'map5')">Project 5</button>
         </div>
@@ -199,7 +200,7 @@
 
         <div id="map2" class="tab-content">
           <div class="map-display-box">
-            <img src="kindergarten_vector_map.png" alt="Kindergarten Accessibility Map" class="map-static-img" onerror="this.src='https://via.placeholder.com/600x400?text=Kindergarten+Map+Placeholder'">
+            <img src="kindergarten_vector_map.png" alt="Kindergarten Accessibility Map" class="map-static-img">
           </div>
           <div class="map-details">
             <div>
@@ -214,15 +215,15 @@
 
         <div id="map3" class="tab-content">
           <div class="map-display-box">
-            <div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted)">[ Map Asset Preview 3 ]</div>
+            <img src="flood map 1.png" alt="Flood Risk Analysis Map" class="map-static-img">
           </div>
           <div class="map-details">
             <div>
-              <h3>Project Title 3</h3>
-              <p>Describe your cartographic metrics, design systems decisions, specific regional sustainability targets, or spatial indexing criteria here.</p>
+              <h3>Flood Risk &amp; Spatial Vulnerability Analysis</h3>
+              <p>This spatial project model showcases topographic exposure and localized catchment risks. Built by evaluating hydrological overlay constraints, digital elevation structures, and flood plains configuration boundaries to evaluate vulnerabilities across environmental assets.</p>
             </div>
             <div class="action-bar">
-              <button class="btn-fullscreen" onclick="alert('Link your standalone map file path here!')">View Map Full Screen ↗</button>
+              <a href="flood map 1.png" target="_blank" class="btn-fullscreen">View Full Screen Graphic ↗</a>
             </div>
           </div>
         </div>
