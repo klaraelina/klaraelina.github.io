@@ -56,7 +56,7 @@
     .button{ display:inline-block; padding:0.9rem 2rem; border-radius:10px; background:var(--accent); color:white; font-weight:600; font-size:0.95rem; letter-spacing:0.01em; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px rgba(25, 25, 112, 0.25); }
     .button:hover{ opacity:0.95; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(25, 25, 112, 0.35); }
     
-    /* Academic Layout Layout Layout Sections */
+    /* Academic Layout Sections */
     section{ padding:7rem 0; border-bottom:1px solid var(--border); background: var(--bg); }
     .section-title{ margin-bottom:4rem; }
     .section-title h2{ font-size:2.5rem; margin-bottom:1rem; font-family:'Merriweather', serif; color:var(--heading-blue); letter-spacing:-0.02em; }
@@ -64,9 +64,11 @@
     
     /* Profiles / About Me Section */
     .about-grid { display: grid; grid-template-columns: 300px 1fr; gap:4rem; align-items: center; }
-    .about-image-container { position: relative; background: var(--border); border-radius: var(--radius); aspect-ratio: 1/1; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s ease; }
-    .about-image-container:hover { transform: scale(1.02); }
-    .about-image-container img { width: 100%; height: 100%; object-fit: cover; }
+    
+    /* Modified Image Frame: contain style combined with light slate backdrop eliminates close-up face zoom artifacts */
+    .about-image-container { position: relative; background: #f1f5f9; border-radius: var(--radius); aspect-ratio: 1/1; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .about-image-container img { width: 100%; height: 100%; object-fit: contain; padding: 0.5rem; }
+    
     .about-box{ background:var(--surface); padding:3rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); font-size:1.1rem; color: var(--muted); line-height:1.8; }
     .about-box p + p{ margin-top:1.5rem; }
     
@@ -90,18 +92,14 @@
     .map-static-img { max-width: 100%; max-height: 480px; object-fit: contain; border-radius: 8px; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .map-display-box:hover .map-static-img { transform: scale(1.015); }
     
-    /* Valencia Nested Nav Elements */
-    .valencia-container { display: flex; flex-direction: column; gap: 2rem; }
-    .sub-tabs-menu { display: flex; gap: 0.5rem; flex-wrap: wrap; background: #f1f5f9; padding: 0.5rem; border-radius: 12px; border: 1px solid var(--border); }
-    .sub-tab-btn { padding: 0.6rem 1.2rem; border: 1px solid var(--border); background: var(--surface); font-size: 0.85rem; font-weight: 600; color: var(--muted); cursor: pointer; border-radius: 8px; transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
-    .sub-tab-btn:hover { color: var(--heading-blue); background: #f8fafc; border-color: #cbd5e1; }
-    .sub-tab-btn.active { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 4px 12px rgba(25,25,112,0.15); }
+    /* Valencia Complete Vertical Stack Structure */
+    .valencia-showcase-layout { display: flex; flex-direction: column; gap: 4rem; width: 100%; }
+    .valencia-overview-card { background: #f1f5f9; padding: 2.5rem; border-radius: 16px; border: 1px solid var(--border); }
+    .valencia-overview-card h4 { font-family: 'Merriweather', serif; color: var(--heading-blue); font-size: 1.25rem; margin-bottom: 0.75rem; }
+    .valencia-overview-card p { color: var(--muted); font-size: 1rem; }
     
-    .sub-map-view { display: none; }
-    .sub-map-view.active { display: block; animation: fadeIn 0.3s ease-out; }
-    
-    .valencia-text-block { display: none; }
-    .valencia-text-block.active { display: block; animation: fadeIn 0.3s ease-out; }
+    .valencia-map-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; border-bottom: 1px dashed var(--border); padding-bottom: 4rem; }
+    .valencia-map-row:last-child { border-bottom: none; padding-bottom: 0; }
     
     /* Project Detail Panels */
     .map-details { display: flex; flex-direction: column; justify-content: space-between; padding: 0.5rem 0; }
@@ -132,6 +130,7 @@
     @media(max-width:1024px){
       .hero { grid-template-columns: 1fr; padding: 6rem 0 4rem; gap: 3rem; }
       .tab-content.active { grid-template-columns: 1fr; padding: 2.5rem; }
+      .valencia-map-row { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 3rem; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-image-container { max-width: 260px; margin: 0 auto; }
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -267,65 +266,96 @@
           </div>
         </div>
 
-        <!-- MAP TAB 4 (VALENCIA PROJECTS MULTI-IMAGE GALLERY) -->
-        <div id="map4" class="tab-content">
-          <div class="valencia-container">
-            <div class="sub-tabs-menu">
-              <button class="sub-tab-btn active" onclick="switchValencia(event, 'v1', 'desc1')">1. True Color (2017)</button>
-              <button class="sub-tab-btn" onclick="switchValencia(event, 'v2', 'desc2')">2. True Color (2024)</button>
-              <button class="sub-tab-btn" onclick="switchValencia(event, 'v3', 'desc3')">3. NDVI (2017)</button>
-              <button class="sub-tab-btn" onclick="switchValencia(event, 'v4', 'desc4')">4. NDVI (2024)</button>
-              <button class="sub-tab-btn" onclick="switchValencia(event, 'v5', 'desc5')">5. Vegetation Change</button>
+        <!-- MAP TAB 4 (VALENCIA REMOVED TABS — FIXED GRID OVERVIEW & SCROLL STACK) -->
+        <div id="map4" class="tab-content" style="display:none; grid-template-columns:1fr; gap:0;">
+          <div class="valencia-showcase-layout">
+            
+            <!-- Map 4 Section Header Overview Box -->
+            <div class="valencia-overview-card">
+              <h4>Valencia Remote Sensing Project Overview</h4>
+              <p>This section displays multi-temporal satellite data analysis tracking urban development signatures and environmental indexes across Valencia, Spain, spanning from 2017 to 2024. Scroll through the analytical models below to see individual layer extractions and explicit structural breakdowns.</p>
             </div>
 
-            <!-- Image View Display Ports Frame Configured to Avoid Crop Marks -->
-            <div id="v1" class="sub-map-view active">
-              <div class="map-display-box"><img src="TrueColor_2017.png" alt="Valencia True Color 2017" class="map-static-img"></div>
-            </div>
-            <div id="v2" class="sub-map-view">
-              <div class="map-display-box"><img src="TrueColor_2024.png" alt="Valencia True Color 2024" class="map-static-img"></div>
-            </div>
-            <div id="v3" class="sub-map-view">
-              <div class="map-display-box"><img src="NDVI 2017 Valencia.png" alt="NDVI 2017 Valencia" class="map-static-img"></div>
-            </div>
-            <div id="v4" class="sub-map-view">
-              <div class="map-display-box"><img src="NDVI 2024 VAL.png" alt="NDVI 2024 Valencia" class="map-static-img"></div>
-            </div>
-            <div id="v5" class="sub-map-view">
-              <div class="map-display-box"><img src="NDVI change.png" alt="NDVI Change Analysis Map" class="map-static-img"></div>
-            </div>
-          </div>
-
-          <div class="map-details">
-            <!-- Syncing descriptive side notes panel grids -->
-            <div id="desc1" class="valencia-text-block active">
-              <h3>Valencia True Color Imagery (2017)</h3>
-              <p>This image provides a true color (RGB) baseline snapshot of the Valencia metropolitan area in 2017. It captures urban footprint densities, coastal margins, and the surrounding agricultural greenbelts before major multi-year developments took place.</p>
-            </div>
-            
-            <div id="desc2" class="valencia-text-block">
-              <h3>Valencia True Color Imagery (2024)</h3>
-              <p>Representing the target comparative true color profile, this 2024 layout tracks recent expansion footprints. Comparing this view directly with the 2017 baseline reveals infrastructural progress and changes along urban margins.</p>
-            </div>
-            
-            <div id="desc3" class="valencia-text-block">
-              <h3>Baseline NDVI Spectrum Analysis (2017)</h3>
-              <p>This Normalized Difference Vegetation Index (NDVI) mapping visualizes photosynthetic activity intensity in 2017. Darker regions map deep canopy cover or dense cropland growth profiles, establishing environmental metrics for comparison.</p>
-            </div>
-            
-            <div id="desc4" class="valencia-text-block">
-              <h3>Comparative NDVI Spectrum Analysis (2024)</h3>
-              <p>The updated 2024 NDVI map isolates modern canopy distributions and agricultural trends. It highlights seasonal biomass variations and shows how urban developments have affected natural vegetation cover over time.</p>
-            </div>
-            
-            <div id="desc5" class="valencia-text-block">
-              <h3>NDVI Environmental Change Delta Map</h3>
-              <p>This change detection map subtracts the 2017 NDVI values from the 2024 data to calculate net biomass variations. It highlights key environmental trends, showing areas of vegetation loss alongside regions with improved green space management.</p>
+            <!-- Individual Map View #1 -->
+            <div class="valencia-map-row">
+              <div class="map-display-box">
+                <img src="TrueColor_2017.png" alt="Valencia True Color 2017" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>1. True Color Imagery (2017)</h3>
+                  <p>This image provides a true color (RGB) baseline snapshot of the Valencia metropolitan area in 2017. It captures urban footprint densities, coastal margins, and the surrounding agricultural greenbelts before major multi-year developments took place.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="TrueColor_2017.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
             </div>
 
-            <div class="action-bar">
-              <a href="TrueColor_2017.png" target="_blank" id="valencia-fs-link" class="btn-fullscreen">View Current Map Full Screen ↗</a>
+            <!-- Individual Map View #2 -->
+            <div class="valencia-map-row">
+              <div class="map-display-box">
+                <img src="TrueColor_2024.png" alt="Valencia True Color 2024" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>2. True Color Imagery (2024)</h3>
+                  <p>Representing the target comparative true color profile, this 2024 layout tracks recent expansion footprints. Comparing this view directly with the 2017 baseline reveals infrastructural progress and changes along urban margins.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="TrueColor_2024.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
             </div>
+
+            <!-- Individual Map View #3 -->
+            <div class="valencia-map-row">
+              <div class="map-display-box">
+                <img src="NDVI 2017 Valencia.png" alt="NDVI 2017 Valencia" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>3. Baseline NDVI Spectrum Analysis (2017)</h3>
+                  <p>This Normalized Difference Vegetation Index (NDVI) mapping visualizes photosynthetic activity intensity in 2017. Darker regions map deep canopy cover or dense cropland growth profiles, establishing environmental metrics for comparison.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="NDVI 2017 Valencia.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Individual Map View #4 -->
+            <div class="valencia-map-row">
+              <div class="map-display-box">
+                <img src="NDVI 2024 VAL.png" alt="NDVI 2024 Valencia" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>4. Comparative NDVI Spectrum Analysis (2024)</h3>
+                  <p>The updated 2024 NDVI map isolates modern canopy distributions and agricultural trends. It highlights seasonal biomass variations and shows how urban developments have affected natural vegetation cover over time.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="NDVI 2024 VAL.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Individual Map View #5 -->
+            <div class="valencia-map-row">
+              <div class="map-display-box">
+                <img src="NDVI change.png" alt="NDVI Change Analysis Map" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>5. NDVI Environmental Change Delta Map</h3>
+                  <p>This change detection map subtracts the 2017 NDVI values from the 2024 data to calculate net biomass variations. It highlights key environmental trends, showing areas of vegetation loss alongside regions with improved green space management.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="NDVI change.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -407,7 +437,7 @@
 
   <footer>
     <div class="container">
-      &copy; 2026 Klara Tokatlian • Built with precision &amp; care.
+      &copy; 2026 Klara Tokatlian
     </div>
   </footer>
 
@@ -417,39 +447,26 @@
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tab-content");
       for (i = 0; i < tabcontent.length; i++) {
+        // Clear standard layout overrides
+        tabcontent[i].style.display = "none";
         tabcontent[i].classList.remove("active");
       }
       tablinks = document.getElementsByClassName("tab-btn");
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].classList.remove("active");
       }
-      document.getElementById(mapId).classList.add("active");
+      
+      var selectedTab = document.getElementById(mapId);
+      selectedTab.classList.add("active");
+      
+      // Override standard grid display properties for Map 4 to properly structure the full vertical overview stack
+      if(mapId === 'map4') {
+        selectedTab.style.display = "block";
+      } else {
+        selectedTab.style.display = "grid";
+      }
+      
       evt.currentTarget.classList.add("active");
-    }
-
-    function switchValencia(evt, targetSubId, descId) {
-      var i, subViews, subButtons, textBlocks;
-      
-      subViews = document.getElementsByClassName("sub-map-view");
-      for (i = 0; i < subViews.length; i++) {
-        subViews[i].classList.remove("active");
-      }
-      document.getElementById(targetSubId).classList.add("active");
-      
-      textBlocks = document.getElementsByClassName("valencia-text-block");
-      for (i = 0; i < textBlocks.length; i++) {
-        textBlocks[i].classList.remove("active");
-      }
-      document.getElementById(descId).classList.add("active");
-      
-      subButtons = document.getElementsByClassName("sub-tab-btn");
-      for (i = 0; i < subButtons.length; i++) {
-        subButtons[i].classList.remove("active");
-      }
-      evt.currentTarget.classList.add("active");
-
-      var imgSrc = document.getElementById(targetSubId).getElementsByTagName('img')[0].getAttribute('src');
-      document.getElementById('valencia-fs-link').setAttribute('href', imgSrc);
     }
   </script>
 </body>
