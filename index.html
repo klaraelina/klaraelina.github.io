@@ -62,10 +62,8 @@
     .section-title h2{ font-size:2.5rem; margin-bottom:1rem; font-family:'Merriweather', serif; color:var(--heading-blue); letter-spacing:-0.02em; }
     .section-title p{ color:var(--muted); font-size:1.1rem; font-weight: 400; }
     
-    /* Profiles / About Me Section */
+    /* Profiles / About Me Section - Less zoomed photo container fixed */
     .about-grid { display: grid; grid-template-columns: 300px 1fr; gap:4rem; align-items: center; }
-    
-    /* Modified Image Frame: contain style combined with light slate backdrop eliminates close-up face zoom artifacts */
     .about-image-container { position: relative; background: #f1f5f9; border-radius: var(--radius); aspect-ratio: 1/1; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); }
     .about-image-container img { width: 100%; height: 100%; object-fit: contain; padding: 0.5rem; }
     
@@ -92,14 +90,14 @@
     .map-static-img { max-width: 100%; max-height: 480px; object-fit: contain; border-radius: 8px; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .map-display-box:hover .map-static-img { transform: scale(1.015); }
     
-    /* Valencia Complete Vertical Stack Structure */
-    .valencia-showcase-layout { display: flex; flex-direction: column; gap: 4rem; width: 100%; }
-    .valencia-overview-card { background: #f1f5f9; padding: 2.5rem; border-radius: 16px; border: 1px solid var(--border); }
-    .valencia-overview-card h4 { font-family: 'Merriweather', serif; color: var(--heading-blue); font-size: 1.25rem; margin-bottom: 0.75rem; }
-    .valencia-overview-card p { color: var(--muted); font-size: 1rem; }
+    /* Global Section Multi-Map Row Layouts (Used for Map 4 & Map 5) */
+    .showcase-vertical-stack { display: flex; flex-direction: column; gap: 4rem; width: 100%; }
+    .project-overview-card { background: #f1f5f9; padding: 2.5rem; border-radius: 16px; border: 1px solid var(--border); }
+    .project-overview-card h4 { font-family: 'Merriweather', serif; color: var(--heading-blue); font-size: 1.25rem; margin-bottom: 0.75rem; }
+    .project-overview-card p { color: var(--muted); font-size: 1rem; }
     
-    .valencia-map-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; border-bottom: 1px dashed var(--border); padding-bottom: 4rem; }
-    .valencia-map-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .showcase-map-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; border-bottom: 1px dashed var(--border); padding-bottom: 4rem; }
+    .showcase-map-row:last-child { border-bottom: none; padding-bottom: 0; }
     
     /* Project Detail Panels */
     .map-details { display: flex; flex-direction: column; justify-content: space-between; padding: 0.5rem 0; }
@@ -130,7 +128,7 @@
     @media(max-width:1024px){
       .hero { grid-template-columns: 1fr; padding: 6rem 0 4rem; gap: 3rem; }
       .tab-content.active { grid-template-columns: 1fr; padding: 2.5rem; }
-      .valencia-map-row { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 3rem; }
+      .showcase-map-row { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 3rem; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-image-container { max-width: 260px; margin: 0 auto; }
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -214,7 +212,7 @@
           <button class="tab-btn" onclick="openMap(event, 'map2')">Utrecht Cycling Accessibility</button>
           <button class="tab-btn" onclick="openMap(event, 'map3')">Flood Risk Analysis</button>
           <button class="tab-btn" onclick="openMap(event, 'map4')">Valencia Remote Sensing</button>
-          <button class="tab-btn" onclick="openMap(event, 'map5')">Future Spatial Research</button>
+          <button class="tab-btn" onclick="openMap(event, 'map5')">Advanced Image Classification Pipeline</button>
         </div>
 
         <!-- MAP TAB 1 -->
@@ -266,18 +264,17 @@
           </div>
         </div>
 
-        <!-- MAP TAB 4 (VALENCIA REMOVED TABS — FIXED GRID OVERVIEW & SCROLL STACK) -->
+        <!-- MAP TAB 4 (VALENCIA SCROLL STACK) -->
         <div id="map4" class="tab-content" style="display:none; grid-template-columns:1fr; gap:0;">
-          <div class="valencia-showcase-layout">
+          <div class="showcase-vertical-stack">
             
-            <!-- Map 4 Section Header Overview Box -->
-            <div class="valencia-overview-card">
+            <div class="project-overview-card">
               <h4>Valencia Remote Sensing Project Overview</h4>
               <p>This section displays multi-temporal satellite data analysis tracking urban development signatures and environmental indexes across Valencia, Spain, spanning from 2017 to 2024. Scroll through the analytical models below to see individual layer extractions and explicit structural breakdowns.</p>
             </div>
 
-            <!-- Individual Map View #1 -->
-            <div class="valencia-map-row">
+            <!-- Valencia Map 1 -->
+            <div class="showcase-map-row">
               <div class="map-display-box">
                 <img src="TrueColor_2017.png" alt="Valencia True Color 2017" class="map-static-img">
               </div>
@@ -292,8 +289,8 @@
               </div>
             </div>
 
-            <!-- Individual Map View #2 -->
-            <div class="valencia-map-row">
+            <!-- Valencia Map 2 -->
+            <div class="showcase-map-row">
               <div class="map-display-box">
                 <img src="TrueColor_2024.png" alt="Valencia True Color 2024" class="map-static-img">
               </div>
@@ -308,8 +305,8 @@
               </div>
             </div>
 
-            <!-- Individual Map View #3 -->
-            <div class="valencia-map-row">
+            <!-- Valencia Map 3 -->
+            <div class="showcase-map-row">
               <div class="map-display-box">
                 <img src="NDVI 2017 Valencia.png" alt="NDVI 2017 Valencia" class="map-static-img">
               </div>
@@ -324,8 +321,8 @@
               </div>
             </div>
 
-            <!-- Individual Map View #4 -->
-            <div class="valencia-map-row">
+            <!-- Valencia Map 4 -->
+            <div class="showcase-map-row">
               <div class="map-display-box">
                 <img src="NDVI 2024 VAL.png" alt="NDVI 2024 Valencia" class="map-static-img">
               </div>
@@ -340,8 +337,8 @@
               </div>
             </div>
 
-            <!-- Individual Map View #5 -->
-            <div class="valencia-map-row">
+            <!-- Valencia Map 5 -->
+            <div class="showcase-map-row">
               <div class="map-display-box">
                 <img src="NDVI change.png" alt="NDVI Change Analysis Map" class="map-static-img">
               </div>
@@ -359,19 +356,129 @@
           </div>
         </div>
 
-        <!-- MAP TAB 5 -->
-        <div id="map5" class="tab-content">
-          <div class="map-display-box">
-            <div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-weight:500;">[ Ongoing Research Pipeline Asset Preview ]</div>
-          </div>
-          <div class="map-details">
-            <div>
-              <h3>Future Spatial Research &amp; Analytics</h3>
-              <p>Ongoing coursework expansion focusing on advanced predictive modeling, Python spatial automation protocols, machine learning landscape classifications, and environmental dashboard integrations.</p>
+        <!-- MAP TAB 5 (NEWLY ADDED SCROLL STACK: CERTIFICATE & COMPLETE ASSIGNMENTS PIPELINE) -->
+        <div id="map5" class="tab-content" style="display:none; grid-template-columns:1fr; gap:0;">
+          <div class="showcase-vertical-stack">
+            
+            <div class="project-overview-card">
+              <h4>Supervised Pixel-Based Image Classification Pipeline</h4>
+              <p>This section provides a structured breakdown of advanced digital image processing protocols. It showcases the progressive transition from parsing raw orbital satellite data to analyzing pixel boundaries, extracting spectral reflectance signatures, and deploying advanced machine learning classifiers to automate landscape feature recognition.</p>
             </div>
-            <div class="action-bar">
-              <button class="btn-fullscreen" disabled style="opacity: 0.4; cursor: not-allowed; border-color:#cbd5e1; color:#94a3b8;">Coming Soon ↗</button>
+
+            <!-- Asset 1: Certificate -->
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <!-- If rendering as a graphic image file, use .png/.jpeg format equivalent -->
+                <img src="Performing Supervised Pixel-Based Image Classification_Certificate_06242026.png" alt="Image Classification Course Certificate" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>Academic Certification</h3>
+                  <p><strong>Credential:</strong> Performing Supervised Pixel-Based Image Classification</p>
+                  <p style="margin-top:0.5rem;">This official certificate validates my mastery over advanced digital landscape workflows. It confirms my technical proficiency in configuring training samples, defining feature classes, handling multispectral remote sensing bands, and evaluating computational classification accuracy matrix outputs.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="Performing Supervised Pixel-Based Image Classification_Certificate_06242026.pdf" target="_blank" class="btn-fullscreen">View Document File ↗</a>
+                </div>
+              </div>
             </div>
+
+            <!-- Asset 2: satellite.png -->
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="satelite.png" alt="Raw Satellite Imagery Base" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>1. Raw Satellite Imagery Baseline</h3>
+                  <p>This is the foundational baseline layer showing raw, uncompressed multispectral satellite imagery before any computational processing takes place. Orbital sensors capture data across various invisible electromagnetic wavelengths, providing the raw spectral building blocks needed to differentiate earth surface textures like asphalt, deep water, and vegetation canopy fields.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="satelite.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Asset 3: pixel size.png -->
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="pixel size.png" alt="Spatial Resolution Resolution Inspection" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>2. Spatial Resolution &amp; Grid Pixel Analysis</h3>
+                  <p>This analytical layer isolates and measures individual pixel sizes (ground-sampling distance) across the canvas grid. Understanding pixel dimensions is critical; it defines the spatial limits of the data, determining whether small structures like cars and houses can be clearly distinguished or if they blend into a single block of mixed color values.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="pixel size.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Asset 4: Close up Spectral Profile.png -->
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="Close up Spectral Profile.png" alt="Close up Spectral Profile Analysis" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>3. Localized Spectral Profile Diagnostics</h3>
+                  <p>This chart explores the unique "spectral signature" of different surface materials. Because objects like water, trees, and buildings reflect light uniquely across different wavelengths, plotting these reflection behaviors allows the computer to instantly tell materials apart based on their light signature.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="Close up Spectral Profile.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Asset 5: unsupervised pixel based.png -->
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="unsupervised pixel based.png" alt="Unsupervised Pixel Based Classification" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>4. Unsupervised Pixel-Based Classification</h3>
+                  <p>This map shows the results of an unsupervised classification, where a computer algorithm automatically groups individual pixels based entirely on their mathematical similarity. This stage requires no human training inputs; the software simply looks for clusters of matching pixel values and groups them together into raw data classes.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="unsupervised pixel based.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Asset 6: Unsupervised object based.png -->
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="Unsupervised object based.png" alt="Unsupervised Object Based Segmentation" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>5. Unsupervised Object-Based Segmentation</h3>
+                  <p>Moving beyond individual pixels, this model groups neighboring pixels with similar color values, textures, and shapes into distinct "objects" or boundaries. This method better mimics how human eyes see the world, grouping pixels together into coherent shapes like fields or building footprints before trying to classify them.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="Unsupervised object based.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Asset 7: Supervised object based.png -->
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="Supervised object based.png" alt="Supervised Object Based Final Map" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>6. Supervised Object-Based Classification</h3>
+                  <p>This is the final, most accurate map in the pipeline. By training a machine learning algorithm with real-world target samples—manually pointing out known examples of houses, water bodies, and forests—the computer can accurately categorize all the segmented shapes across the entire region, creating a polished land cover map.</p>
+                </div>
+                <div class="action-bar">
+                  <a href="Supervised object based.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -447,7 +554,6 @@
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tab-content");
       for (i = 0; i < tabcontent.length; i++) {
-        // Clear standard layout overrides
         tabcontent[i].style.display = "none";
         tabcontent[i].classList.remove("active");
       }
@@ -459,8 +565,8 @@
       var selectedTab = document.getElementById(mapId);
       selectedTab.classList.add("active");
       
-      // Override standard grid display properties for Map 4 to properly structure the full vertical overview stack
-      if(mapId === 'map4') {
+      // Override standard layout grids for vertical scroll-stacks (Map 4 & Map 5) to keep full-width rows neat
+      if(mapId === 'map4' || mapId === 'map5') {
         selectedTab.style.display = "block";
       } else {
         selectedTab.style.display = "grid";
