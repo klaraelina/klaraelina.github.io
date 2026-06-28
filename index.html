@@ -65,7 +65,7 @@
     .section-title h2{ font-size:2.5rem; margin-bottom:1rem; font-family:'Merriweather', serif; color:var(--heading-blue); letter-spacing:-0.02em; }
     .section-title p{ color:var(--muted); font-size:1.1rem; font-weight: 400; }
     
-    /* About Section Styling with Zoomed Profile Image Layout */
+    /* About Section */
     .about-grid { display: grid; grid-template-columns: 320px 1fr; gap:4rem; align-items: stretch; }
     .about-image-container { position: relative; background: #f1f5f9; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); height: 360px; }
     .about-image-container img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; transform: scale(1.15); }
@@ -91,14 +91,14 @@
     
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     
-    /* Project Media & Fixed Certificate Boxes */
+    /* Project Media Displays */
     .map-display-box { background: #f8fafc; border-radius: 14px; border: 1px solid var(--border); min-height: 480px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 1.5rem; position: relative; }
     .map-embed { width: 100%; height: 480px; border: none; background: #f8fafc; border-radius: 8px; }
     .map-static-img { max-width: 100%; max-height: 480px; object-fit: contain; border-radius: 8px; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .map-display-box:hover .map-static-img { transform: scale(1.015); }
 
-    .certificate-container { background: #f8fafc; border-radius: 14px; border: 1px solid var(--border); padding: 1rem; display: flex; align-items: center; justify-content: center; min-height: 520px; width: 100%; }
-    .certificate-view { width: 100%; height: 500px; border: none; border-radius: 8px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+    .certificate-container { background: #f8fafc; border-radius: 14px; border: 1px solid var(--border); padding: 1.5rem; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 650px; margin: 0 auto; }
+    .certificate-view-img { width: 100%; height: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); border: 1px solid var(--border); }
     
     /* Portfolio Project Stack Layout Elements */
     .showcase-vertical-stack { display: flex; flex-direction: column; gap: 4rem; width: 100%; }
@@ -114,11 +114,11 @@
     .map-details h3 { font-family: 'Merriweather', serif; font-size: 1.5rem; font-weight: 700; color: var(--heading-blue); margin-bottom: 1.25rem; letter-spacing: -0.01em; }
     .map-details p { color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 1rem; }
     
-    /* Enhanced Neuroscience Links Styling */
-    .neuro-link { background: var(--neuro-bg); border-left: 4px solid var(--neuro-purple); border-radius: 6px; padding: 1.25rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(76, 29, 149, 0.04); }
-    .neuro-link h5 { font-family: 'Inter', sans-serif; color: var(--neuro-purple); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
-    .neuro-link h5::before { content: "🧠"; font-size: 1.1rem; }
-    .neuro-link p { color: #3b0764; font-size: 0.95rem; font-style: italic; line-height: 1.6; margin: 0; }
+    /* Highlighted Cognitive / Neuroscience Links */
+    .neuro-link { background: var(--neuro-bg); border-left: 4px solid var(--neuro-purple); border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(76, 29, 149, 0.03); border-top: 1px solid rgba(76, 29, 149, 0.05); border-right: 1px solid rgba(76, 29, 149, 0.05); border-bottom: 1px solid rgba(76, 29, 149, 0.05); }
+    .neuro-link h5 { font-family: 'Inter', sans-serif; color: var(--neuro-purple); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem; }
+    .neuro-link h5::before { content: "🧠"; font-size: 1.2rem; }
+    .neuro-link p { color: #2e0854; font-size: 0.98rem; font-style: normal; line-height: 1.7; margin: 0; font-weight: 400; }
     
     .technical-warning { background: #fff7ed; border-left: 4px solid #ea580c; border-radius: 6px; padding: 1.25rem; margin: 1.5rem 0; }
     .technical-warning h5 { color: #c2410c; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 700; }
@@ -133,7 +133,7 @@
     .skill{ padding:0.6rem 1.2rem; border-radius:10px; background:var(--accent-light); color: var(--accent); font-size:0.9rem; font-weight:600; border: 1px solid rgba(25,25,112,0.06); transition: all 0.2s ease; }
     .skill:hover { transform: translateY(-2px); background: #e0f2fe; }
     
-    /* Contact Box Cards Layouts */
+    /* Contact Box Cards */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
     .contact-card{ background:var(--surface); padding:3rem; border-radius:var(--radius); border: 1px solid var(--border); box-shadow:var(--shadow); display: flex; flex-direction: column; gap: 1.5rem; }
     .contact-item { display: flex; flex-direction: column; border-bottom: 1px solid #f1f5f9; padding-bottom: 1rem; }
@@ -227,8 +227,8 @@
           <button class="tab-btn active" onclick="openMap(event, 'map1')">SDG 6.1.1 (Water Security)</button>
           <button class="tab-btn" onclick="openMap(event, 'map2')">Utrecht Cycling Accessibility</button>
           <button class="tab-btn" onclick="openMap(event, 'map3')">Flood Risk Analysis</button>
-          <button class="tab-btn" onclick="openMap(event, 'map4')">Valencia Remote Sensing (Coursework)</button>
-          <button class="tab-btn" onclick="openMap(event, 'map5')">Advanced Image Classification Pipeline</button>
+          <button class="tab-btn" onclick="openMap(event, 'map4')">Valencia Remote Sensing</button>
+          <button class="tab-btn" onclick="openMap(event, 'map5')">Image Classification Pipeline</button>
         </div>
 
         <div id="map1" class="tab-content active">
@@ -300,10 +300,8 @@
           <div class="showcase-vertical-stack">
             
             <div class="project-overview-card">
-              <h4>Coursework Report: Vegetation Indices &amp; Environmental Metrics</h4>
-              <p><strong>Course:</strong> Geographic Information Science and Systems (UC-SCI-EARL5) | Geosciences University College Utrecht<br>
-              <strong>Instructor:</strong> Britta Ricker, PhD</p>
-              <p style="margin-top:0.8rem;">This independent research project analyzes urban expansion and environmental health in Valencia, Spain, from 2017 to 2024. The following report integrates satellite remote sensing data with spatial theory to assess environmental sustainability.</p>
+              <h4>Vegetation Indices &amp; Environmental Metrics: Valencia Case Study</h4>
+              <p>This project analyzes urban expansion and environmental health in Valencia, Spain, from 2017 to 2024. The following report integrates satellite remote sensing data with spatial theory to assess environmental sustainability.</p>
             </div>
 
             <div class="showcase-map-row">
@@ -400,85 +398,110 @@
           <div class="showcase-vertical-stack">
             
             <div class="project-overview-card">
-              <h4>Supervised &amp; Unsupervised Land Use / Land Cover (LULC) Classification</h4>
-              <p><strong>Course Requirement:</strong> Science Park Utrecht Analysis | Instructor: Britta Ricker, PhD</p>
-              <p style="margin-top:0.8rem;">This module details how computers process satellite imagery, using machine learning classifiers to sort pixels and objects into land-cover maps. Below is the complete narrative answering all assignment evaluation criteria.</p>
+              <h4>Supervised &amp; Unsupervised Land Cover Classification</h4>
+              <p>Exploring automated machine learning pipelines to translate raw multispectral imagery into distinct land cover features at Science Park Utrecht.</p>
             </div>
 
             <div class="showcase-map-row">
               <div class="certificate-container">
-                <iframe class="certificate-view" src="Performing Supervised Pixel Based Image Classification_Certificate_06242026.png" title="Esri Certificate Viewer"></iframe>
+                <img src="Performing Supervised Pixel-Based Image Classification_Certificate_06242026.png" alt="Esri Course Certificate Display" class="certificate-view-img">
               </div>
               <div class="map-details">
                 <div>
                   <h3>Esri Academic Certification</h3>
-                  <p><strong>Course Completed:</strong> Performing Supervised Pixel-Based Image Classification (Esri 2026)</p>
-                  <p>This certificate confirms my training in setting up training samples, managing multispectral bands, and calculating accuracy matrices using maximum likelihood and machine learning algorithms in ArcGIS Pro.</p>
+                  <p>This verified credential confirms technical mastery over setting up training samples, managing multi-spectral data layers, and auditing automated matrix models in ArcGIS Pro.</p>
                 </div>
               </div>
             </div>
 
-            <div style="background:#ffffff; padding:2.5rem; border-radius:16px; border:1px solid var(--border); margin-bottom:3rem;">
-              <h3 style="margin-bottom:1.5rem; color:var(--heading-blue); font-family:'Merriweather',serif;">LULC Assignment Narrative Answers</h3>
-              
-              <div style="margin-bottom:2rem;">
-                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 1: Automated Land Cover Value &amp; Classification Paradigms</h4>
-                <p>Automated land cover classification turns massive amounts of multi-band satellite imagery into categorized maps, allowing us to track global change at scale. The difference lies in where the instruction comes from: <strong>Supervised classification</strong> relies on user-defined training samples, where the cartographer manually identifies known sites (e.g., water, urban, forest) to build a statistical profile that guides the algorithm. In contrast, <strong>Unsupervised classification</strong> uses clustering algorithms (like Iso Cluster) to group pixels entirely by their mathematical similarities in light reflection, requiring the analyst to label the categories after the processing is complete.</p>
-                
-                <div class="neuro-link">
-                  <h5>Neuroscience Connection: Top-Down vs. Bottom-Up Processing</h5>
-                  <p>This division mirrors the brain's visual processing pathways. Unsupervised classification is like bottom-up processing—relying purely on raw sensory inputs and pixel frequencies to find patterns. Supervised classification behaves like top-down processing, where internal memories, expectations, and trained schemas guide our attention to categorize what we see.</p>
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="satelite.png" alt="Raw Satellite Imagery Base" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>1. Raw Satellite Base Imagery</h3>
+                  <p>The starting point: raw, unprocessed satellite data. Automated classification turns this vast spatial information into actionable environmental maps. The process is divided into two methods:</p>
+                  <p><strong>Supervised classification</strong> relies on human direction; the cartographer sets specific training areas to train the algorithm. <strong>Unsupervised classification</strong> uses mathematical logic, relying entirely on clustering algorithms to group pixels by their spectral similarities before human input.</p>
                 </div>
               </div>
+            </div>
 
-              <div style="margin-bottom:2rem;">
-                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 2: Spatial Resolution Metrics</h4>
-                <p>Using the ArcGIS Pro measure tool across individual pixels within the Science Park satellite scene, the approximate resolution is <strong>10 meters by 10 meters per pixel</strong>. This matches the standard spatial resolution of Sentinel-2's visible and near-infrared bands, meaning each pixel averages out data over a 100-square-meter footprint on the ground.</p>
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="pixel size.png" alt="Spatial Resolution Metric Inspection" class="map-static-img">
               </div>
-
-              <div style="margin-bottom:2rem;">
-                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 3: Spectral Profile Diagnostics</h4>
-                <p>Spectral profiles plot how different land types reflect light across multiple wavelengths, creating a unique signature for each surface. By selecting distinct training regions, I mapped signatures for four key classes: <em>Water</em> drops off sharply in the infrared bands because it absorbs long wavelengths, while <em>Forest/Vegetation</em> spikes clearly in the near-infrared spectrum. <em>Urban</em> surfaces show a steady, elevated reflection profile across all bands due to asphalt and concrete, whereas <em>Open Fields</em> display a distinct soil signature that sets them apart from dense canopies.</p>
-                <div style="margin:1.5rem 0;" class="map-display-box"><img src="Close up Spectral Profile.png" alt="Spectral Profile Chart" class="map-static-img"></div>
-              </div>
-
-              <div style="margin-bottom:2rem;">
-                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 5 &amp; 6: Unsupervised Pixel-Based vs. Object-Based Segmentation</h4>
-                <p>The pixel-based approach inspects every cell independently, often resulting in a messy "salt-and-pepper" effect where individual mismatched pixels disrupt large blocks of color. Object-based segmentation avoids this by grouping neighboring pixels with similar light profiles and shapes into cohesive objects before categorizing them. This approach creates a cleaner map that better aligns with real-world features.</p>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1.5rem 0;">
-                  <div class="map-display-box"><img src="unsupervised pixel based.png" alt="Unsupervised Pixel" class="map-static-img"></div>
-                  <div class="map-display-box"><img src="Unsupervised object based.png" alt="Unsupervised Object" class="map-static-img"></div>
+              <div class="map-details">
+                <div>
+                  <h3>2. Spatial Resolution Evaluation</h3>
+                  <p>Using the analytical measurement tool in ArcGIS Pro, I tracked the edge profiles of individual cells. The approximate spatial resolution of this Sentinel composite is <strong>10 meters by 10 meters per pixel</strong>.</p>
+                  <p>This resolution determines the scale of details we can extract, defining whether structural elements remain sharp or blend into surrounding landscape data.</p>
                 </div>
               </div>
+            </div>
 
-              <div style="margin-bottom:2rem;">
-                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 7 &amp; 8: Supervised Outputs &amp; Confusion Matrix Metrics</h4>
-                <p>The supervised object-based approach yielded the cleanest alignment with real-world features. To assess its accuracy, I ran a <strong>Confusion Matrix</strong>, which compares the computer's classifications against real reference data.</p>
-                <p>This process evaluates two main types of error: <strong>Producer Error</strong> (omission) occurs when a real feature is left out of its correct category on the map. <strong>User Error</strong> (commission) occurs when a feature is incorrectly included in a category where it doesn't belong, misleading the map reader. My matrix revealed strong accuracy for water and forest, but showed slight confusion between urban concrete structures and bare soil fields.</p>
-                <div style="margin:1.5rem 0;" class="map-display-box"><img src="Supervised object based.png" alt="Supervised Object Classification Map" class="map-static-img"></div>
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="Close up Spectral Profile.png" alt="Close up Spectral Profile Analysis" class="map-static-img">
               </div>
-
-              <div style="margin-bottom:2rem;">
-                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 9: NDVI &amp; Visual Communication Theory</h4>
-                <p>The ideal color scheme for displaying NDVI uses a graded Red-Yellow-Green diverging ramp. This palette is highly effective for visual communication because humans have strong, culturally ingrained associations with these colors: red signals stress or non-vegetated terrain, yellow marks transition zones, and vibrant green indicates dense, healthy canopy. The primary target audience includes urban planners, environmental researchers, and local policymakers who need to assess ecosystem health quickly without decoding complex technical values.</p>
-                
-                <div class="technical-warning">
-                  <h5>Technological Limitations Notice</h5>
-                  <p>During our final lab session, unexpected software crashes and band-matching errors in the raster calculator prevented the system from rendering the final localized NDVI image layer for Science Park Utrecht. Rather than using broken files, this profile openly acknowledges those technical hurdles, while presenting the underlying logic and optimal color theory required for accurate environmental communication.</p>
+              <div class="map-details">
+                <div>
+                  <h3>3. Spectral Profile Custom Diagnostics</h3>
+                  <p>This diagnostic charts light reflection variations across the spectrum for distinct land cover types, modeling signatures for *Water, Forest, Urban,* and *Open Fields* classes. Objects reflect light differently across wavelengths based on their physical and chemical properties, giving each material a unique signature.</p>
+                  
+                  <div class="neuro-link">
+                    <h5>Neuroscience Connection: Feature Extraction &amp; Receptive Fields</h5>
+                    <p>This digital extraction mimics the early stages of human vision. Just as convolutional algorithms detect spectral signatures across specific pixel clusters, hyper-complex cells in our visual cortex (V1 and V2) analyze specialized receptive fields to isolate edges, textures, and changes in light before our conscious mind identifies the object.</p>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div style="margin-bottom:1rem;">
-                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 10: Methodological Trade-offs &amp; Data Anomalies</h4>
-                <p>Each classification method has unique strengths and weaknesses:</p>
-                <ul style="margin-left:1.5rem; margin-bottom:1rem; display:grid; gap:0.5rem;">
-                  <li><strong>Unsupervised Pixel:</strong> Fast and unbiased, but creates messy, fragmented maps that are difficult to interpret.</li>
-                  <li><strong>Unsupervised Object:</strong> Effectively groups distinct land features, but sometimes merges separate boundaries if they share similar colors.</li>
-                  <li><strong>Supervised Object-Based:</strong> Offers the highest overall accuracy by combining human knowledge with spatial shapes, though it requires significant time and manual effort to build clean training samples.</li>
-                </ul>
-                <p>Anomalies in our dataset included strong reflections from metallic roofs at the Science Park, which the computer often misclassified as water bodies due to their unique light signatures across certain bands. This highlight shows why human oversight remains essential when auditing automated machine learning models.</p>
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="unsupervised pixel based.png" alt="Unsupervised Pixel Based Classification" class="map-static-img">
               </div>
+              <div class="map-details">
+                <div>
+                  <h3>4. Unsupervised Pixel-Based Classification</h3>
+                  <p>This pipeline groups individual isolated pixels purely by raw light values, leading to a fragmented "salt-and-pepper" effect. While fast, its main weakness is that it ignores surrounding context, mistaking complex urban shadows or bright roofs for entirely different classes like water or barren soil.</p>
+                </div>
+              </div>
+            </div>
 
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="Unsupervised object based.png" alt="Unsupervised Object Based Segmentation" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>5. Unsupervised Object-Based Segmentation</h3>
+                  <p>This method groups adjacent pixels with matching textures and shapes into clean spatial objects before running classification logic. This spatial clustering mimics human vision much better than isolated pixels, smoothing out background noise to track continuous features like entire buildings or fields.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-map-row">
+              <div class="map-display-box">
+                <img src="Supervised object based.png" alt="Supervised Object Based Classification Map" class="map-static-img">
+              </div>
+              <div class="map-details">
+                <div>
+                  <h3>6. Supervised Object-Based Mapping &amp; Validation</h3>
+                  <p>The final, refined land cover map combines targeted human training signatures with object segmentation. To validate this model, I calculated a <strong>Confusion Matrix</strong> to check the map's classifications against real-world reference points.</p>
+                  <p>This matrix isolates two core types of error: <strong>Producer Error</strong> (omitting a real feature from its correct category) and <strong>User Error</strong> (incorrectly adding a feature to a category where it doesn't belong). While the map performed well across forest and water classes, highly reflective metal roofs occasionally caused user errors by showing up as water pixels.</p>
+                  
+                  <div class="neuro-link">
+                    <h5>Neuroscience Connection: Top-Down Perceptual Organization</h5>
+                    <p>Supervised object classification mirrors top-down visual processing. Instead of letting raw data overwhelm our focus, our prefrontal cortex uses stored mental categories to organize incoming sensory inputs. This model applies a structured schema to clear up messy pixel data, just like our minds organize a busy visual scene.</p>
+                  </div>
+
+                  <div class="technical-warning">
+                    <h5>Technological Limitations Notice — NDVI Diagnostics</h5>
+                    <p>During our final lab session, unexpected software crashes and band-matching errors in the raster calculator prevented the system from rendering the final localized NDVI image layer for Science Park Utrecht. Rather than using broken files, this profile openly acknowledges those technical hurdles, while presenting the underlying logic and optimal color theory required for accurate environmental communication.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
