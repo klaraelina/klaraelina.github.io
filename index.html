@@ -1,449 +1,1065 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Klara Tokatlian — GIS Portfolio</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+
   <style>
+
     :root{
+
       --bg:#f8fafc;
+
       --surface:#ffffff;
+
       --text:#0f172a;
+
       --muted:#475569;
+
       --accent:#191970;
+
       --accent-light:#f0f7ff;
+
       --border:#e2e8f0;
+
       --shadow:0 20px 40px -15px rgba(15,23,42,0.05), 0 0 0 1px rgba(15,23,42,0.01);
+
       --radius:20px;
+
       --max-width:1200px;
+
       --heading-blue:#008092;
+
     }
+
     *{ margin:0; padding:0; box-sizing:border-box; }
+
     html{ scroll-behavior:smooth; -webkit-text-size-adjust: 100%; }
+
     body{ font-family:'Inter', sans-serif; background:var(--bg); color:var(--text); line-height:1.7; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
     
+
     img{ max-width:100%; height:auto; display:block; border-radius:var(--radius); }
+
     a{ text-decoration:none; color:var(--accent); transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+
     
+
     .container{ width:min(90%, var(--max-width)); margin:auto; }
+
     
+
     /* Elegant Sticky Header */
+
     header{ position:sticky; top:0; z-index:1000; background:rgba(255,255,255,0.8); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(226,232,240,0.8); }
+
     nav{ display:flex; justify-content:space-between; align-items:center; padding:1.25rem 0; }
+
     .logo{ font-weight:700; font-size:1.25rem; letter-spacing:-0.02em; color:var(--heading-blue); }
+
     .nav-links{ display:flex; gap:2.5rem; }
+
     .nav-links a{ color:var(--muted); font-size:0.95rem; font-weight:500; position:relative; padding:0.25rem 0; }
+
     .nav-links a:hover{ color:var(--heading-blue); }
+
     .nav-links a::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px; bottom: 0; left: 0; background-color: var(--heading-blue); transform-origin: bottom right; transition: transform 0.25s ease-out; }
+
     .nav-links a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+
     
+
     /* Premium Landing / Hero Section */
+
     .hero-wrapper { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+
     .hero-wrapper::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,128,146,0.03) 0%, rgba(255,255,255,0) 70%); top: -200px; right: -100px; pointer-events: none; }
+
     .hero{ padding:9rem 0 7rem; display:grid; grid-template-columns: 1.25fr 0.75fr; gap:4rem; align-items: center; }
+
     .hero h1{ font-family:'Merriweather', serif; font-size:clamp(2.5rem, 4.5vw, 3.75rem); font-weight:700; line-height:1.25; margin-bottom:1.5rem; color:var(--heading-blue); letter-spacing:-0.03em; }
+
     .hero p{ color:var(--muted); font-size:1.2rem; line-height:1.75; margin-bottom:2.5rem; font-weight: 300; }
+
     
+
     .hero-card{ background:var(--surface); border-radius:var(--radius); padding:2.5rem; box-shadow:var(--shadow); border:1px solid rgba(226,232,240,0.7); }
+
     .hero-card h3{ font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--heading-blue); margin-bottom:1.5rem; font-weight: 700; }
+
     .hero-card ul{ list-style:none; display:grid; gap:1rem; }
+
     .hero-card li{ color:var(--muted); font-size:0.98rem; display:flex; align-items:center; gap:0.75rem; font-weight: 500; }
+
     .hero-card li::before { content: "—"; color: var(--heading-blue); font-weight: 700; }
+
     
+
     .button{ display:inline-block; padding:0.9rem 2rem; border-radius:10px; background:var(--accent); color:white; font-weight:600; font-size:0.95rem; letter-spacing:0.01em; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px rgba(25, 25, 112, 0.25); }
+
     .button:hover{ opacity:0.95; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(25, 25, 112, 0.35); }
+
     
+
     /* Academic Layout Sections */
+
     section{ padding:7rem 0; border-bottom:1px solid var(--border); background: var(--bg); }
+
     .section-title{ margin-bottom:4rem; }
+
     .section-title h2{ font-size:2.5rem; margin-bottom:1rem; font-family:'Merriweather', serif; color:var(--heading-blue); letter-spacing:-0.02em; }
+
     .section-title p{ color:var(--muted); font-size:1.1rem; font-weight: 400; }
+
     
-    /* Profiles / About Me Section */
+
+    /* Profiles / About Me Section - Less zoomed photo container fixed */
+
     .about-grid { display: grid; grid-template-columns: 300px 1fr; gap:4rem; align-items: center; }
+
     .about-image-container { position: relative; background: #f1f5f9; border-radius: var(--radius); aspect-ratio: 1/1; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); }
+
     .about-image-container img { width: 100%; height: 100%; object-fit: contain; padding: 0.5rem; }
+
     
+
     .about-box{ background:var(--surface); padding:3rem; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); font-size:1.1rem; color: var(--muted); line-height:1.8; }
+
     .about-box p + p{ margin-top:1.5rem; }
+
     
+
     /* Dynamic Interactive Tab Controls Canvas */
+
     .tabs-container { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+
     .tabs-menu { display: flex; background: #f1f5f9; border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
+
     .tabs-menu::-webkit-scrollbar { display: none; }
+
     
+
     .tab-btn { padding: 1.25rem 1.75rem; border: none; background: none; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--muted); cursor: pointer; text-align: center; white-space: nowrap; transition: all 0.2s ease; border-right: 1px solid var(--border); flex: 1; }
+
     .tab-btn:hover { background: rgba(255,255,255,0.6); color: var(--heading-blue); }
+
     .tab-btn.active { background: var(--surface); color: var(--heading-blue); border-bottom: 3px solid var(--heading-blue); }
+
     
+
     .tab-content { display: none; padding: 3.5rem; animation: fadeIn 0.4s ease-out; }
+
     .tab-content.active { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 3.5rem; }
+
     
+
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
     
-    /* Display Ports Framing */
+
+    /* Display Ports Framing (Aspect Ratio Contain Guard Protection) */
+
     .map-display-box { background: #f8fafc; border-radius: 14px; border: 1px solid var(--border); min-height: 480px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 1.5rem; position: relative; }
+
     .map-embed { width: 100%; height: 480px; border: none; background: #f8fafc; border-radius: 8px; }
+
     .map-static-img { max-width: 100%; max-height: 480px; object-fit: contain; border-radius: 8px; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
     .map-display-box:hover .map-static-img { transform: scale(1.015); }
+
     
-    /* Global Section Multi-Map Row Layouts */
+
+    /* Global Section Multi-Map Row Layouts (Used for Map 4 & Map 5) */
+
     .showcase-vertical-stack { display: flex; flex-direction: column; gap: 4rem; width: 100%; }
-    .project-overview-card { background: #f1f5f9; padding: 2.5rem; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 2rem; }
+
+    .project-overview-card { background: #f1f5f9; padding: 2.5rem; border-radius: 16px; border: 1px solid var(--border); }
+
     .project-overview-card h4 { font-family: 'Merriweather', serif; color: var(--heading-blue); font-size: 1.25rem; margin-bottom: 0.75rem; }
-    .project-overview-card p { color: var(--muted); font-size: 1rem; margin-bottom: 1rem; }
-    .project-overview-card p:last-child { margin-bottom: 0; }
+
+    .project-overview-card p { color: var(--muted); font-size: 1rem; }
+
     
+
     .showcase-map-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; border-bottom: 1px dashed var(--border); padding-bottom: 4rem; }
+
     .showcase-map-row:last-child { border-bottom: none; padding-bottom: 0; }
+
     
+
     /* Project Detail Panels */
+
     .map-details { display: flex; flex-direction: column; justify-content: space-between; padding: 0.5rem 0; }
+
     .map-details h3 { font-family: 'Merriweather', serif; font-size: 1.5rem; font-weight: 700; color: var(--heading-blue); margin-bottom: 1.25rem; letter-spacing: -0.01em; }
-    .map-details p { color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 1rem; }
-    .map-details p:last-child { margin-bottom: 0; }
+
+    .map-details p { color: var(--muted); font-size: 1rem; line-height: 1.75; }
+
     
+
     .action-bar { margin-top: 2rem; display: flex; gap: 1rem; }
+
     .btn-fullscreen { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--surface); border: 1.5px solid var(--accent); color: var(--accent); padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; }
+
     .btn-fullscreen:hover { background: var(--accent); color: white; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(25,25,112,0.15); }
+
     
+
     /* Technical pill designs */
+
     .skills{ display:flex; flex-wrap:wrap; gap:0.75rem; }
+
     .skill{ padding:0.6rem 1.2rem; border-radius:10px; background:var(--accent-light); color: var(--accent); font-size:0.9rem; font-weight:600; border: 1px solid rgba(25,25,112,0.06); transition: all 0.2s ease; }
+
     .skill:hover { transform: translateY(-2px); background: #e0f2fe; }
+
     
+
     /* Split-Grid Contacts Panels Layouts */
+
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+
     .contact-card{ background:var(--surface); padding:3rem; border-radius:var(--radius); border: 1px solid var(--border); box-shadow:var(--shadow); display: flex; flex-direction: column; gap: 1.5rem; }
+
     .contact-item { display: flex; flex-direction: column; border-bottom: 1px solid #f1f5f9; padding-bottom: 1rem; }
+
     .contact-item:last-child { border: none; padding: 0; }
+
     .contact-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #94a3b8; font-weight: 700; margin-bottom: 0.3rem; }
+
     .contact-value { font-size: 1.15rem; font-weight: 500; color: var(--text); }
+
     .contact-value a { color: var(--heading-blue); font-weight: 600; }
+
     .contact-value a:hover { color: var(--accent); text-decoration: underline; }
+
     
+
     footer{ padding:5rem 0; text-align:center; color:var(--muted); font-size:0.95rem; border-top:1px solid var(--border); background: #ffffff; font-weight: 500; }
+
     
+
     @media(max-width:1024px){
+
       .hero { grid-template-columns: 1fr; padding: 6rem 0 4rem; gap: 3rem; }
+
       .tab-content.active { grid-template-columns: 1fr; padding: 2.5rem; }
+
       .showcase-map-row { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 3rem; }
+
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+
       .about-image-container { max-width: 260px; margin: 0 auto; }
+
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+
       .map-display-box { min-height: 380px; }
+
       .map-embed { height: 380px; }
+
     }
+
     @media(max-width:640px){
+
       nav{ flex-direction:column; gap:1.25rem; }
+
       .nav-links{ justify-content:center; gap: 1.5rem; }
+
       .tab-btn { padding: 1rem; font-size: 0.88rem; }
+
     }
+
   </style>
+
 </head>
+
 <body>
 
+
+
   <header>
+
     <div class="container">
+
       <nav>
+
         <div class="logo">Klara Tokatlian</div>
+
         <div class="nav-links">
+
           <a href="#about">About</a>
+
           <a href="#projects">Map Projects</a>
+
           <a href="#skills">Skills</a>
+
           <a href="#contact">Contact</a>
+
         </div>
+
       </nav>
+
     </div>
+
   </header>
 
+
+
+  <!-- LANDING PAGE HERO -->
+
   <div class="hero-wrapper">
+
     <section class="hero container">
+
       <div>
+
         <h1>GIS &amp; Cartography Portfolio</h1>
+
         <p>A showcase of mapping projects, spatial analysis, and cartographic design work completed at Utrecht University, fusing scientific discovery with data visualization.</p>
+
         <a href="#projects" class="button">Explore Maps Overview</a>
+
       </div>
+
       <div class="hero-card">
+
         <h3>Portfolio Highlights</h3>
+
         <ul>
+
           <li>Interactive Spatial Web Maps</li>
+
           <li>Advanced Choropleth &amp; Vector Mapping</li>
-          <li>Data Analysis with QGIS &amp; GEE</li>
-          <li>Urban Accessibility &amp; Remote Sensing</li>
+
+          <li>Data Analysis with QGIS &amp; Python</li>
+
+          <li>Urban Accessibility Modeling</li>
+
         </ul>
+
       </div>
+
     </section>
+
   </div>
 
+
+
+  <!-- ABOUT ME SECTION -->
+
   <section id="about">
+
     <div class="container">
+
       <div class="section-title">
+
         <h2>About Me</h2>
+
         <p>Bridging Cognitive Neuroscience, Chemistry, and Spatial Data.</p>
+
       </div>
+
       <div class="about-grid">
+
         <div class="about-image-container">
+
           <img src="me.jpeg" alt="Klara Tokatlian Portfolio Image">
+
         </div>
+
         <div class="about-box">
+
           <p>I am a student at University College Utrecht (UCU), studying Cognitive Neuroscience and Chemistry. Taking the Geographical Information Systems Lab Course at UCU has pushed me well outside my usual coursework.</p>
+
           <p>I have learned to write Python and JavaScript to clean and visualize spatial data, build interactive web maps with modern libraries, and think more critically about how to communicate scientific findings visually. This portfolio showcases the core projects I designed during this course.</p>
+
         </div>
+
       </div>
+
     </div>
+
   </section>
+
+
+
+  <!-- PROJECTS / INTERACTIVE TABBED MAP VIEW -->
 
   <section id="projects">
+
     <div class="container">
+
       <div class="section-title">
+
         <h2>Map Portfolio &amp; Projects</h2>
+
         <p>Select a tab below to quickly jump between individual maps, complete with technical descriptions and interactive layers.</p>
+
       </div>
+
+
 
       <div class="tabs-container">
+
+        <!-- Tab Controls Menu -->
+
         <div class="tabs-menu">
+
           <button class="tab-btn active" onclick="openMap(event, 'map1')">SDG 6.1.1 (Water Security)</button>
+
           <button class="tab-btn" onclick="openMap(event, 'map2')">Utrecht Cycling Accessibility</button>
+
           <button class="tab-btn" onclick="openMap(event, 'map3')">Flood Risk Analysis</button>
+
           <button class="tab-btn" onclick="openMap(event, 'map4')">Valencia Remote Sensing</button>
+
+          <button class="tab-btn" onclick="openMap(event, 'map5')">Advanced Image Classification Pipeline</button>
+
         </div>
+
+
+
+        <!-- MAP TAB 1 -->
 
         <div id="map1" class="tab-content active">
+
           <div class="map-display-box">
+
             <iframe class="map-embed" src="map.html" title="SDG 6.1.1 Interactive Map" loading="lazy"></iframe>
+
           </div>
+
           <div class="map-details">
+
             <div>
+
               <h3>Where the World Drinks Safely — SDG 6.1.1</h3>
+
               <p>This project involved creating a global choropleth map illustrating access to safely managed drinking water using the SDG 6.1.1 indicator. The workflow began in QGIS, where I joined national-level water access data to a country boundary shapefile, cleaned attribute fields, and applied graduated color classifications.</p>
-              <p>The interactive version was built using Leaflet.js, incorporating custom styling, dynamic pop-ups, and an interactive legend to display global inequalities cleanly.</p>
+
+              <p style="margin-top:0.8rem;">The interactive version was built using Leaflet.js, incorporating custom styling, dynamic pop-ups, and an interactive legend to display global inequalities cleanly.</p>
+
             </div>
+
             <div class="action-bar">
+
               <a href="map.html" target="_blank" class="btn-fullscreen">View Map Full Screen ↗</a>
+
             </div>
+
           </div>
+
         </div>
+
+
+
+        <!-- MAP TAB 2 -->
 
         <div id="map2" class="tab-content">
+
           <div class="map-display-box">
+
             <img src="kindergarten_vector_map.png" alt="Kindergarten Accessibility Map" class="map-static-img">
+
           </div>
+
           <div class="map-details">
+
             <div>
+
               <h3>Kindergarten Accessibility in Utrecht by Bicycle</h3>
-              <p><strong>Spatial Question:</strong> How accessible are local hospitals and kindergartens across different residential neighborhoods in Utrecht within a realistic cycling commute?</p>
-              <p><strong>Methods &amp; Process:</strong> Using vector spatial analysis tools, I generated localized service areas called "isochrones"—which map out polygons representing incremental travel thresholds (ranging from 4 to 24 minutes) along the actual bike path infrastructure of the municipality. Next, I used <code>Vector -> Analysis -> Count Points in Polygon</code>. Setting the isochrone layers as our boundary polygon and the location data as our target point features, QGIS tallied exactly how many assets fell within each travel zone.</p>
-              <p><strong>Findings &amp; Patterns:</strong> The resulting dataset clearly maps regional proximity profiles. Central Utrecht displays highly compact accessibility metrics, where residential clusters sit well within 4-to-8-minute thresholds. Moving toward suburban boundaries reveals distinct service gaps where families encounter longer travel paths, signaling uneven infrastructural distribution.</p>
+
+              <p>An intricate spatial vector analysis calculating commuter thresholds (ranging from 4–24 minutes) across the municipality of Utrecht. Focuses on infrastructure accessibility modeling and residential data clusters mapping out regional proximity profiles.</p>
+
             </div>
+
             <div class="action-bar">
+
               <a href="kindergarten_vector_map.png" target="_blank" class="btn-fullscreen">View Full Screen Graphic ↗</a>
+
             </div>
+
           </div>
+
         </div>
+
+
+
+        <!-- MAP TAB 3 -->
 
         <div id="map3" class="tab-content">
+
           <div class="map-display-box">
+
             <img src="flood map 1.png" alt="Flood Risk Analysis Map" class="map-static-img">
+
           </div>
+
           <div class="map-details">
+
             <div>
+
               <h3>Flood Risk &amp; Spatial Vulnerability Analysis</h3>
-              <p>This spatial project models topographic exposure and localized catchment risks across the Netherlands. Built by evaluating hydrological overlay constraints, digital elevation structures, and flood plain boundaries, it uncovers spatial vulnerabilities across environmental and municipal assets.</p>
-              <p><strong>The Dunes of The Hague:</strong> A surprising finding emerged when examining the coastal city of The Hague. While its coastal margins are protected by prominent, historically resilient sand dunes, the primary flooding hazard is actually internal rather than ocean-driven. Heavy rainfall forces the water table upward from beneath the low-lying interior soils, backing up urban canal networks and trapping water behind the very dunes meant to protect the coast.</p>
+
+              <p>This spatial project model showcases topographic exposure and localized catchment risks. Built by evaluating hydrological overlay constraints, digital elevation structures, and flood plains configuration boundaries to evaluate vulnerabilities across environmental assets.</p>
+
             </div>
+
             <div class="action-bar">
+
               <a href="flood map 1.png" target="_blank" class="btn-fullscreen">View Full Screen Graphic ↗</a>
+
             </div>
+
           </div>
+
         </div>
+
+
+
+        <!-- MAP TAB 4 (VALENCIA SCROLL STACK) -->
 
         <div id="map4" class="tab-content" style="display:none; grid-template-columns:1fr; gap:0;">
+
           <div class="showcase-vertical-stack">
+
             
+
             <div class="project-overview-card">
-              <h4>Geographic Information Science and Systems (UC-SCI-EARL5)</h4>
-              <p><strong>Instructor:</strong> Britta Ricker, PhD | <strong>Institution:</strong> Geosciences Department, Utrecht University</p>
-              <hr style="margin:1.2rem 0; border:none; border-top:1px solid var(--border);">
-              
-              <h5 style="font-size:1.15rem; margin-bottom:0.5rem; color:var(--heading-blue);">The Brain on Greenery: A Neuroscientific Twist on Earth Observation</h5>
-              <p>As a student of Cognitive Neuroscience and Chemistry, I look at satellite imagery through a unique lens. In neuroscience, <em>Biophilia Hypothesis</em> models show that viewing natural landscapes vs. urban concrete triggers clear physiological changes. Natural spaces reduce cortisol levels, lower sympathetic nervous system activation, and boost fronto-temporal alpha-wave activity associated with relaxed alertness.</p>
-              <p>By mapping vegetation indices in Valencia, Spain, we aren't just looking at environmental metrics. We are mapping the "cognitive health potential" of a city. This project demonstrates how satellite data tracks the balance between stress-inducing urban structures and brain-soothing natural ecosystems, supporting UN Sustainable Development Goal 15 (Life on Land).</p>
+
+              <h4>Valencia Remote Sensing Project Overview</h4>
+
+              <p>This section displays multi-temporal satellite data analysis tracking urban development signatures and environmental indexes across Valencia, Spain, spanning from 2017 to 2024. Scroll through the analytical models below to see individual layer extractions and explicit structural breakdowns.</p>
+
             </div>
 
-            <div style="background:var(--surface); padding:2.5rem; border-radius:16px; border:1px solid var(--border); margin-bottom:2rem;">
-              <h3 style="font-family:'Merriweather',serif; color:var(--heading-blue); margin-bottom:1rem; font-size:1.4rem;">Core Technical Framework</h3>
-              <p style="margin-bottom:1rem;">To evaluate Valencia's changing landscape, we must first understand the remote sensing data pipeline:</p>
-              <ul style="padding-left:1.5rem; display:grid; gap:0.8rem; color:var(--muted); font-size:0.95rem;">
-                <li><strong>What is an orthomosaic?</strong> It is an aerial image compiled from a patchwork of overlapping satellite photographs. These individual frames are geometrically corrected for topographic relief, lens distortion, and camera tilt, transforming them into a mathematically uniform map with a reliable scale bar.</li>
-                <li><strong>How do you make a cloudless composite?</strong> Using JavaScript in Google Earth Engine (GEE), I filtered thousands of Sentinel-2 data tiles over a specific date range. The algorithm screens each pixel, masks out cloud obstructions, and calculates the median value for every pixel coordinate across the time frame to produce a clean, cloudless image.</li>
-                <li><strong>What is multispectral imagery?</strong> Unlike standard cameras that capture only visible True Color light (Red, Green, Blue), the Sentinel-2 satellite payload measures non-visible light wavelengths across 13 spectral bands. This includes Near-Infrared (NIR) and Shortwave Infrared (SWIR). This data is invaluable because different materials reflect unique spectral signatures. Healthy vegetation strongly absorbs visible red light but intensely reflects near-infrared light.</li>
-                <li><strong>Why do date ranges and seasons matter?</strong> Phenology—the seasonal lifecycle of plants—fundamentally skews satellite calculations. Comparing an image taken during winter dormancy with one from summer peak bloom would yield misleading change data. For Valencia, I selected matching summer date ranges (June–August) for both 2017 and 2024 to keep solar angles and crop cycles consistent.</li>
-              </ul>
-            </div>
+
+
+            <!-- Valencia Map 1 -->
 
             <div class="showcase-map-row">
+
               <div class="map-display-box">
+
                 <img src="TrueColor_2017.png" alt="Valencia True Color 2017" class="map-static-img">
+
               </div>
+
               <div class="map-details">
+
                 <div>
-                  <h3>1. True Color RGB Composite (Time 1: 2017)</h3>
-                  <p>This layout displays a true color mosaic of Valencia in 2017, constructed in QGIS by mapping Sentinel-2 bands 4, 3, and 2 directly to the Red, Green, and Blue channels. This mirrors how the human eye perceives the landscape, capturing the dense urban core, coastal port facilities, and surrounding agricultural plots.</p>
+
+                  <h3>1. True Color Imagery (2017)</h3>
+
+                  <p>This image provides a true color (RGB) baseline snapshot of the Valencia metropolitan area in 2017. It captures urban footprint densities, coastal margins, and the surrounding agricultural greenbelts before major multi-year developments took place.</p>
+
                 </div>
+
                 <div class="action-bar">
-                  <a href="TrueColor_2017.png" target="_blank" class="btn-fullscreen">View Map Layout ↗</a>
+
+                  <a href="TrueColor_2017.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
                 </div>
+
               </div>
+
             </div>
 
+
+
+            <!-- Valencia Map 2 -->
+
             <div class="showcase-map-row">
+
               <div class="map-display-box">
+
                 <img src="TrueColor_2024.png" alt="Valencia True Color 2024" class="map-static-img">
+
               </div>
+
               <div class="map-details">
+
                 <div>
-                  <h3>2. True Color RGB Composite (Time 2: 2024)</h3>
-                  <p>This companion layout captures Valencia seven years later, during the summer of 2024. While the visible changes seem subtle to the naked eye, a careful look reveals infrastructural expansions along the city fringes and shifts in water levels within coastal lagoons.</p>
+
+                  <h3>2. True Color Imagery (2024)</h3>
+
+                  <p>Representing the target comparative true color profile, this 2024 layout tracks recent expansion footprints. Comparing this view directly with the 2017 baseline reveals infrastructural progress and changes along urban margins.</p>
+
                 </div>
+
                 <div class="action-bar">
-                  <a href="TrueColor_2024.png" target="_blank" class="btn-fullscreen">View Map Layout ↗</a>
+
+                  <a href="TrueColor_2024.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
                 </div>
+
               </div>
+
             </div>
 
+
+
+            <!-- Valencia Map 3 -->
+
             <div class="showcase-map-row">
+
               <div class="map-display-box">
+
                 <img src="NDVI 2017 Valencia.png" alt="NDVI 2017 Valencia" class="map-static-img">
+
               </div>
+
               <div class="map-details">
+
                 <div>
-                  <h3>3. Normalized Difference Vegetation Index (Time 1: 2017)</h3>
-                  <p><strong>What is NDVI and how does it work?</strong> The Normalized Difference Vegetation Index quantifies canopy health by calculating the ratio between near-infrared reflection and visible red absorption: <code>(NIR - Red) / (NIR + Red)</code>. In QGIS Raster Calculator, this was coded using Sentinel-2 bands as: <code>(B8 - B4) / (B8 + B4)</code>.</p>
-                  <p>The index yields values from -1.0 to +1.0. Water bodies and urban pavement result in negative scores, while dense, healthy vegetation approaches +1.0. This 2017 map uses a Red-Yellow-Green gradient stretched strictly from -1 to 1, showing strong agricultural activity in the outer valleys.</p>
+
+                  <h3>3. Baseline NDVI Spectrum Analysis (2017)</h3>
+
+                  <p>This Normalized Difference Vegetation Index (NDVI) mapping visualizes photosynthetic activity intensity in 2017. Darker regions map deep canopy cover or dense cropland growth profiles, establishing environmental metrics for comparison.</p>
+
                 </div>
+
                 <div class="action-bar">
-                  <a href="NDVI 2017 Valencia.png" target="_blank" class="btn-fullscreen">View Map Layout ↗</a>
+
+                  <a href="NDVI 2017 Valencia.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
                 </div>
+
               </div>
+
             </div>
 
+
+
+            <!-- Valencia Map 4 -->
+
             <div class="showcase-map-row">
+
               <div class="map-display-box">
+
                 <img src="NDVI 2024 VAL.png" alt="NDVI 2024 Valencia" class="map-static-img">
+
               </div>
+
               <div class="map-details">
+
                 <div>
-                  <h3>4. Normalized Difference Vegetation Index (Time 2: 2024)</h3>
-                  <p>This layer maps the index values for 2024 under identical parameters. From a neuroscience perspective, the green zones represent regions that actively support urban biophilic design, serving as environmental buffers that help mitigate the cognitive fatigue caused by dense gray infrastructure.</p>
+
+                  <h3>4. Comparative NDVI Spectrum Analysis (2024)</h3>
+
+                  <p>The updated 2024 NDVI map isolates modern canopy distributions and agricultural trends. It highlights seasonal biomass variations and shows how urban developments have affected natural vegetation cover over time.</p>
+
                 </div>
+
                 <div class="action-bar">
-                  <a href="NDVI 2024 VAL.png" target="_blank" class="btn-fullscreen">View Map Layout ↗</a>
+
+                  <a href="NDVI 2024 VAL.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
                 </div>
+
               </div>
+
             </div>
 
+
+
+            <!-- Valencia Map 5 -->
+
             <div class="showcase-map-row">
+
               <div class="map-display-box">
+
                 <img src="NDVI change.png" alt="NDVI Change Analysis Map" class="map-static-img">
+
               </div>
+
               <div class="map-details">
+
                 <div>
-                  <h3>5. Change Over Time Analysis Matrix Map</h3>
-                  <p>To pinpoint exactly where vegetation health shifted, I performed change detection math: <code>NDVI 2017 - NDVI 2024 = Change Delta</code>. The resulting map uses a monochromatic color scheme to highlight variations across the landscape.</p>
-                  <p><strong>Interpretation Warning:</strong> When evaluating change over time, some dramatic shifts are actually anomalies caused by minor atmospheric clouds or seasonal crop rotations rather than permanent urban expansion. However, this map successfully captures genuine urban growth patterns, tracking where natural habitats have been replaced by concrete development over the seven-year period.</p>
+
+                  <h3>5. NDVI Environmental Change Delta Map</h3>
+
+                  <p>This change detection map subtracts the 2017 NDVI values from the 2024 data to calculate net biomass variations. It highlights key environmental trends, showing areas of vegetation loss alongside regions with improved green space management.</p>
+
                 </div>
+
                 <div class="action-bar">
-                  <a href="NDVI change.png" target="_blank" class="btn-fullscreen">View Map Layout ↗</a>
+
+                  <a href="NDVI change.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
                 </div>
+
               </div>
+
             </div>
+
+
 
           </div>
+
         </div>
 
+
+
+        <!-- MAP TAB 5 (NEWLY ADDED SCROLL STACK: CERTIFICATE & COMPLETE ASSIGNMENTS PIPELINE) -->
+
+        <div id="map5" class="tab-content" style="display:none; grid-template-columns:1fr; gap:0;">
+
+          <div class="showcase-vertical-stack">
+
+            
+
+            <div class="project-overview-card">
+
+              <h4>Supervised Pixel-Based Image Classification Pipeline</h4>
+
+              <p>This section provides a structured breakdown of advanced digital image processing protocols. It showcases the progressive transition from parsing raw orbital satellite data to analyzing pixel boundaries, extracting spectral reflectance signatures, and deploying advanced machine learning classifiers to automate landscape feature recognition.</p>
+
+            </div>
+
+
+
+            <!-- Asset 1: Certificate -->
+
+            <div class="showcase-map-row">
+
+              <div class="map-display-box">
+
+                <!-- If rendering as a graphic image file, use .png/.jpeg format equivalent -->
+
+                <img src="Performing Supervised Pixel-Based Image Classification_Certificate_06242026.png" alt="Image Classification Course Certificate" class="map-static-img">
+
+              </div>
+
+              <div class="map-details">
+
+                <div>
+
+                  <h3>Academic Certification</h3>
+
+                  <p><strong>Credential:</strong> Performing Supervised Pixel-Based Image Classification</p>
+
+                  <p style="margin-top:0.5rem;">This official certificate validates my mastery over advanced digital landscape workflows. It confirms my technical proficiency in configuring training samples, defining feature classes, handling multispectral remote sensing bands, and evaluating computational classification accuracy matrix outputs.</p>
+
+                </div>
+
+                <div class="action-bar">
+
+                  <a href="Performing Supervised Pixel-Based Image Classification_Certificate_06242026.pdf" target="_blank" class="btn-fullscreen">View Document File ↗</a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- Asset 2: satellite.png -->
+
+            <div class="showcase-map-row">
+
+              <div class="map-display-box">
+
+                <img src="satelite.png" alt="Raw Satellite Imagery Base" class="map-static-img">
+
+              </div>
+
+              <div class="map-details">
+
+                <div>
+
+                  <h3>1. Raw Satellite Imagery Baseline</h3>
+
+                  <p>This is the foundational baseline layer showing raw, uncompressed multispectral satellite imagery before any computational processing takes place. Orbital sensors capture data across various invisible electromagnetic wavelengths, providing the raw spectral building blocks needed to differentiate earth surface textures like asphalt, deep water, and vegetation canopy fields.</p>
+
+                </div>
+
+                <div class="action-bar">
+
+                  <a href="satelite.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- Asset 3: pixel size.png -->
+
+            <div class="showcase-map-row">
+
+              <div class="map-display-box">
+
+                <img src="pixel size.png" alt="Spatial Resolution Resolution Inspection" class="map-static-img">
+
+              </div>
+
+              <div class="map-details">
+
+                <div>
+
+                  <h3>2. Spatial Resolution &amp; Grid Pixel Analysis</h3>
+
+                  <p>This analytical layer isolates and measures individual pixel sizes (ground-sampling distance) across the canvas grid. Understanding pixel dimensions is critical; it defines the spatial limits of the data, determining whether small structures like cars and houses can be clearly distinguished or if they blend into a single block of mixed color values.</p>
+
+                </div>
+
+                <div class="action-bar">
+
+                  <a href="pixel size.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- Asset 4: Close up Spectral Profile.png -->
+
+            <div class="showcase-map-row">
+
+              <div class="map-display-box">
+
+                <img src="Close up Spectral Profile.png" alt="Close up Spectral Profile Analysis" class="map-static-img">
+
+              </div>
+
+              <div class="map-details">
+
+                <div>
+
+                  <h3>3. Localized Spectral Profile Diagnostics</h3>
+
+                  <p>This chart explores the unique "spectral signature" of different surface materials. Because objects like water, trees, and buildings reflect light uniquely across different wavelengths, plotting these reflection behaviors allows the computer to instantly tell materials apart based on their light signature.</p>
+
+                </div>
+
+                <div class="action-bar">
+
+                  <a href="Close up Spectral Profile.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- Asset 5: unsupervised pixel based.png -->
+
+            <div class="showcase-map-row">
+
+              <div class="map-display-box">
+
+                <img src="unsupervised pixel based.png" alt="Unsupervised Pixel Based Classification" class="map-static-img">
+
+              </div>
+
+              <div class="map-details">
+
+                <div>
+
+                  <h3>4. Unsupervised Pixel-Based Classification</h3>
+
+                  <p>This map shows the results of an unsupervised classification, where a computer algorithm automatically groups individual pixels based entirely on their mathematical similarity. This stage requires no human training inputs; the software simply looks for clusters of matching pixel values and groups them together into raw data classes.</p>
+
+                </div>
+
+                <div class="action-bar">
+
+                  <a href="unsupervised pixel based.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- Asset 6: Unsupervised object based.png -->
+
+            <div class="showcase-map-row">
+
+              <div class="map-display-box">
+
+                <img src="Unsupervised object based.png" alt="Unsupervised Object Based Segmentation" class="map-static-img">
+
+              </div>
+
+              <div class="map-details">
+
+                <div>
+
+                  <h3>5. Unsupervised Object-Based Segmentation</h3>
+
+                  <p>Moving beyond individual pixels, this model groups neighboring pixels with similar color values, textures, and shapes into distinct "objects" or boundaries. This method better mimics how human eyes see the world, grouping pixels together into coherent shapes like fields or building footprints before trying to classify them.</p>
+
+                </div>
+
+                <div class="action-bar">
+
+                  <a href="Unsupervised object based.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- Asset 7: Supervised object based.png -->
+
+            <div class="showcase-map-row">
+
+              <div class="map-display-box">
+
+                <img src="Supervised object based.png" alt="Supervised Object Based Final Map" class="map-static-img">
+
+              </div>
+
+              <div class="map-details">
+
+                <div>
+
+                  <h3>6. Supervised Object-Based Classification</h3>
+
+                  <p>This is the final, most accurate map in the pipeline. By training a machine learning algorithm with real-world target samples—manually pointing out known examples of houses, water bodies, and forests—the computer can accurately categorize all the segmented shapes across the entire region, creating a polished land cover map.</p>
+
+                </div>
+
+                <div class="action-bar">
+
+                  <a href="Supervised object based.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+        </div>
+
+
+
       </div>
+
     </div>
+
   </section>
+
+
+
+  <!-- SKILLS SECTION -->
 
   <section id="skills">
+
     <div class="container">
+
       <div class="section-title">
-        <h2>Technical Core Skillsets</h2>
-        <p>Toolkits and frameworks leveraged throughout this lab course work.</p>
+
+        <h2>Technical Skills</h2>
+
+        <p>GIS applications, structural engineering codebases, and toolkits I master.</p>
+
       </div>
-      <div class="skills">
-        <span class="skill">QGIS Spatial Analyses Engine</span>
-        <span class="skill">Google Earth Engine (GEE Javascript API)</span>
-        <span class="skill">Leaflet.js Web Maps Deployment</span>
-        <span class="skill">Multispectral Band Math Calculations</span>
-        <span class="skill">Isochrone Commuter Routing Networks</span>
-        <span class="skill">Spatial Joins &amp; Attribute Data Filtering</span>
+
+      <div class="about-box">
+
+        <div class="skills">
+
+          <div class="skill">QGIS</div>
+
+          <div class="skill">ArcGIS Pro</div>
+
+          <div class="skill">Google Earth Engine</div>
+
+          <div class="skill">Remote Sensing</div>
+
+          <div class="skill">Spatial Analysis</div>
+
+          <div class="skill">Cartography</div>
+
+          <div class="skill">Python</div>
+
+          <div class="skill">JavaScript</div>
+
+          <div class="skill">GeoJSON</div>
+
+          <div class="skill">MapLibre GL</div>
+
+        </div>
+
       </div>
+
     </div>
+
   </section>
+
+
+
+  <!-- CONTACT SECTION -->
 
   <section id="contact">
+
     <div class="container">
+
       <div class="section-title">
-        <h2>Connect With Me</h2>
-        <p>University College Utrecht academic point of contact profiles.</p>
+
+        <h2>Contact</h2>
+
+        <p>Get in touch for collaborative opportunities or detailed analytical reviews.</p>
+
       </div>
+
       <div class="contact-grid">
+
         <div class="contact-card">
+
           <div class="contact-item">
-            <span class="contact-label">Student Researcher</span>
+
+            <span class="contact-label">Name</span>
+
             <span class="contact-value">Klara Tokatlian</span>
+
           </div>
+
           <div class="contact-item">
-            <span class="contact-label">Affiliation</span>
-            <span class="contact-value">University College Utrecht, NL</span>
+
+            <span class="contact-label">Email Address</span>
+
+            <span class="contact-value"><a href="mailto:k.e.tokatliansjolander@students.uu.nl">k.e.tokatliansjolander@students.uu.nl</a></span>
+
           </div>
+
         </div>
+
         <div class="contact-card">
-          <div class="contact-item">
-            <span class="contact-label">Project Inquiries</span>
-            <span class="contact-value"><a href="mailto:k.tokatlian@students.uu.nl">k.tokatlian@students.uu.nl</a></span>
-          </div>
-          <div class="contact-item">
-            <span class="contact-label">Course Program</span>
-            <span class="contact-value">Geographical Information Systems Lab</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Klara Tokatlian. Fusing Science, Space, and Spatial Data. Utrecht University Geosciences.</p>
-    </div>
-  </footer>
+          <div class="contact-item">
 
-  <script>
-    function openMap(evt, mapName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tab-content");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-        tabcontent[i].classList.remove("active");
-      }
-      tablinks = document.getElementsByClassName("tab-btn");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-      }
-      var targetTab = document.getElementById(mapName);
-      if(mapName === 'map4') {
-        targetTab.style.display = "block";
-      } else {
-        targetTab.style.display = "grid";
-      }
-      targetTab.classList.add("active");
-      evt.currentTarget.classList.add("active");
-    }
-  </script>
-</body>
-</html>
+      
