@@ -20,6 +20,9 @@
       --radius:20px;
       --max-width:1200px;
       --heading-blue:#008092;
+      --neuro-purple:#4c1d95;
+      --neuro-bg:#f5f3ff;
+      --neuro-border:#ddd6fe;
     }
     *{ margin:0; padding:0; box-sizing:border-box; }
     html{ scroll-behavior:smooth; -webkit-text-size-adjust: 100%; }
@@ -94,8 +97,8 @@
     .map-static-img { max-width: 100%; max-height: 480px; object-fit: contain; border-radius: 8px; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .map-display-box:hover .map-static-img { transform: scale(1.015); }
 
-    .certificate-container { background: #f8fafc; border-radius: 14px; border: 1px solid var(--border); padding: 2rem; display: flex; align-items: center; justify-content: center; min-height: 480px; }
-    .certificate-view { max-width: 100%; max-height: 440px; width: auto; height: auto; object-fit: contain; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); border: 1px solid var(--border); border-radius: 4px; }
+    .certificate-container { background: #f8fafc; border-radius: 14px; border: 1px solid var(--border); padding: 1rem; display: flex; align-items: center; justify-content: center; min-height: 520px; width: 100%; }
+    .certificate-view { width: 100%; height: 500px; border: none; border-radius: 8px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
     
     /* Portfolio Project Stack Layout Elements */
     .showcase-vertical-stack { display: flex; flex-direction: column; gap: 4rem; width: 100%; }
@@ -109,10 +112,19 @@
     /* Project Detail Substructures */
     .map-details { display: flex; flex-direction: column; justify-content: space-between; padding: 0.5rem 0; }
     .map-details h3 { font-family: 'Merriweather', serif; font-size: 1.5rem; font-weight: 700; color: var(--heading-blue); margin-bottom: 1.25rem; letter-spacing: -0.01em; }
-    .map-details p { color: var(--muted); font-size: 1rem; line-height: 1.75; }
-    .map-details .academic-note { margin-top: 1rem; padding: 1rem; background: var(--accent-light); border-left: 3px solid var(--accent); border-radius: 4px; font-size: 0.95rem; font-style: italic; color: var(--accent); }
+    .map-details p { color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 1rem; }
     
-    .action-bar { margin-top: 2rem; display: flex; gap: 1rem; }
+    /* Enhanced Neuroscience Links Styling */
+    .neuro-link { background: var(--neuro-bg); border-left: 4px solid var(--neuro-purple); border-radius: 6px; padding: 1.25rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(76, 29, 149, 0.04); }
+    .neuro-link h5 { font-family: 'Inter', sans-serif; color: var(--neuro-purple); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+    .neuro-link h5::before { content: "🧠"; font-size: 1.1rem; }
+    .neuro-link p { color: #3b0764; font-size: 0.95rem; font-style: italic; line-height: 1.6; margin: 0; }
+    
+    .technical-warning { background: #fff7ed; border-left: 4px solid #ea580c; border-radius: 6px; padding: 1.25rem; margin: 1.5rem 0; }
+    .technical-warning h5 { color: #c2410c; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 700; }
+    .technical-warning p { color: #7c2d12; font-size: 0.95rem; line-height: 1.6; margin: 0; }
+
+    .action-bar { margin-top: 1.5rem; display: flex; gap: 1rem; }
     .btn-fullscreen { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--surface); border: 1.5px solid var(--accent); color: var(--accent); padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; }
     .btn-fullscreen:hover { background: var(--accent); color: white; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(25,25,112,0.15); }
     
@@ -170,16 +182,16 @@
     <section class="hero container">
       <div>
         <h1>GIS &amp; Cartography Portfolio</h1>
-        <p>A showcase of mapping projects, spatial analysis, and cartographic design work completed at Utrecht University, fusing scientific discovery with data visualization.</p>
+        <p>A showcase of mapping projects, remote sensing pipelines, and cartographic design work completed at University College Utrecht, fusing analytical geosciences with insights into human perception.</p>
         <a href="#projects" class="button">Explore Maps Overview</a>
       </div>
       <div class="hero-card">
         <h3>Portfolio Highlights</h3>
         <ul>
           <li>Interactive Spatial Web Maps</li>
-          <li>Advanced Choropleth &amp; Vector Mapping</li>
-          <li>Data Analysis with QGIS &amp; Python</li>
-          <li>Urban Accessibility Modeling</li>
+          <li>Advanced Image Classification (Esri 2026)</li>
+          <li>Multispectral Remote Sensing Workflows</li>
+          <li>Urban Network Accessibility Modeling</li>
         </ul>
       </div>
     </section>
@@ -196,8 +208,8 @@
           <img src="me.jpeg" alt="Klara Tokatlian Portfolio Image">
         </div>
         <div class="about-box">
-          <p>I am a student at University College Utrecht (UCU), studying Cognitive Neuroscience and Chemistry. Taking the Geographical Information Systems Lab Course at Utrecht University has pushed me well outside my usual laboratory coursework, revealing an unexpected connection between how we navigate our internal minds and how we map our external environments.</p>
-          <p>Through this course, I have learned to write Python and JavaScript to clean spatial data, construct interactive web maps using open-source libraries, and think critically about how human perception interacts with complex visual layouts. This portfolio showcases the core projects I designed, highlighting the intersection where environmental data meets human cognition.</p>
+          <p>I am a student at University College Utrecht (UCU), specializing in Cognitive Neuroscience and Chemistry. Taking the Geographical Information Systems course through the lens of our interdisciplinary curriculum has revealed powerful parallels between how the brain constructs cognitive maps to navigate three-dimensional environments and how we visualize geographical phenomena using spatial software.</p>
+          <p>Through this portfolio, I treat spatial data not just as static lines and pixels, but as complex visual arrays that interact directly with human attention, memory networks, and executive decision-making. These mapping projects demonstrate technical proficiency across QGIS, ArcGIS Pro, and Google Earth Engine, paired with a deep appreciation for the cognitive mechanics of map interpretation.</p>
         </div>
       </div>
     </div>
@@ -227,7 +239,12 @@
             <div>
               <h3>Where the World Drinks Safely — SDG 6.1.1</h3>
               <p>This project models global inequalities in clean water access by mapping the United Nations Sustainable Development Goal indicator 6.1.1—the percentage of a population using a safely managed drinking water service. The workflow began in QGIS, where I joined national-level water data to country boundary shapefiles, filtered out tracking errors, and standardized the results.</p>
-              <p style="margin-top:0.8rem;">The interactive version was built using Leaflet.js, incorporating custom styling, dynamic pop-ups, and an interactive legend to display global inequalities cleanly. From a cognitive perspective, using a structured color palette prevents visual overload, allowing viewers to immediately identify macro-regional disparities.</p>
+              <p>The interactive version was built using Leaflet.js, incorporating custom styling, dynamic pop-ups, and an interactive legend to display global inequalities cleanly.</p>
+              
+              <div class="neuro-link">
+                <h5>Neuroscience Connection: Cognitive Load Optimization</h5>
+                <p>Human visual search relies heavily on pre-attentive feature processing. By grouping data into a simplified, clear 5-class choropleth layout, this map aligns with the brain's working memory constraints (Cowan’s K-factor), letting users immediately spot global patterns without experiencing cognitive exhaustion from messy visuals.</p>
+              </div>
             </div>
             <div class="action-bar">
               <a href="map.html" target="_blank" class="btn-fullscreen">View Map Full Screen ↗</a>
@@ -243,9 +260,13 @@
             <div>
               <h3>Kindergarten Accessibility in Utrecht by Bicycle</h3>
               <p><strong>Spatial Question:</strong> How accessible are early childhood educational facilities across the municipality of Utrecht when using active bicycle transport, and where do infrastructural inequities occur?</p>
-              <p style="margin-top:0.5rem;"><strong>Methods &amp; Steps:</strong> I built a network dataset using real cycling pathways rather than simple straight-line buffers. Using vector network service area tools, I generated travel-time polygons (isochrones) at intervals of 4, 8, 12, 16, 20, and 24 minutes. I then ran a <em>Vector → Analysis → Count Points in Polygon</em> process, setting the isochrones as the base layer to calculate the exact number of kindergartens accessible within each time threshold across the municipal zones.</p>
-              <p style="margin-top:0.5rem;"><strong>Findings &amp; Spatial Patterns:</strong> The data revealed strong clustering within the urban core, where families can access multiple facilities in under 8 minutes. However, peripheral residential sectors showed distinct "service deserts," requiring over 20 minutes of travel time.</p>
-              <div class="academic-note">Neuroscience Link: Early environmental complexity and rapid access to social play spaces are vital catalysts for cognitive map formation and neurodevelopment in early childhood.</div>
+              <p><strong>Methods &amp; Steps:</strong> I built a network dataset using real cycling pathways rather than simple straight-line buffers. Using vector network service area tools, I generated travel-time polygons (isochrones) at intervals of 4, 8, 12, 16, 20, and 24 minutes. I then ran a <em>Vector → Analysis → Count Points in Polygon</em> process, setting the isochrones as the base layer to calculate the exact number of kindergartens accessible within each time threshold across the municipal zones.</p>
+              <p><strong>Findings &amp; Spatial Patterns:</strong> The data revealed strong clustering within the urban core, where families can access multiple facilities in under 8 minutes. However, peripheral residential sectors showed distinct "service deserts," requiring over 20 minutes of travel time.</p>
+              
+              <div class="neuro-link">
+                <h5>Neuroscience Connection: Spatial Mapping &amp; Child Development</h5>
+                <p>Early childhood mobility is closely linked to the development of place cells and grid cells in the hippocampal formation. Children who easily explore rich, varied urban spaces build complex neural representations of spatial layout. This means that gaps in infrastructure can directly influence how young minds learn to map and interact with their surroundings.</p>
+              </div>
             </div>
             <div class="action-bar">
               <a href="kindergarten_vector_map.png" target="_blank" class="btn-fullscreen">View Full Screen Graphic ↗</a>
@@ -261,8 +282,13 @@
             <div>
               <h3>Flood Risk &amp; Spatial Vulnerability Analysis</h3>
               <p><strong>Spatial Question:</strong> Which urban catchment structures face the highest risk during extreme weather events, and how does topography dictate local water pooling?</p>
-              <p style="margin-top:0.5rem;"><strong>Methods &amp; Steps:</strong> This environmental model was constructed by analyzing Digital Elevation Models (DEMs). I calculated hydrological flow accumulations, surface slope gradients, and pooling constraints in QGIS. By combining these topographic features with municipal asset layers, I mapped out high-vulnerability risk profiles.</p>
-              <p style="margin-top:0.5rem;"><strong>Findings &amp; Regional Patterns:</strong> While many expect coastal flooding to be the primary threat in the Netherlands, this model highlights a different risk. In areas like the dunes of The Hague, the coastal barrier remains highly resilient. Instead, flooding here is largely internal, driven by heavy rainfall over saturated soils and high groundwater tables that pool in low-lying urban areas behind the dunes.</p>
+              <p><strong>Methods &amp; Steps:</strong> This environmental model was constructed by analyzing Digital Elevation Models (DEMs). I calculated hydrological flow accumulations, surface slope gradients, and pooling constraints in QGIS. By combining these topographic features with municipal asset layers, I mapped out high-vulnerability risk profiles.</p>
+              <p><strong>Findings &amp; Regional Patterns:</strong> While many expect coastal flooding to be the primary threat in the Netherlands, this model highlights a different risk. In areas like the dunes of The Hague, the coastal barrier remains highly resilient. Instead, flooding here is largely internal, driven by heavy rainfall over saturated soils and high groundwater tables that pool in low-lying urban areas behind the dunes.</p>
+              
+              <div class="neuro-link">
+                <h5>Neuroscience Connection: Risk Cognition &amp; Spatial Memory</h5>
+                <p>How humans process environmental threats depends heavily on personal experience, a phenomenon tied to cognitive availability heuristics. Because historical flood barriers shape our spatial memories, internal water pooling represents an invisible risk that people often underestimate, as it isn't linked to a dramatic coastal threat.</p>
+              </div>
             </div>
             <div class="action-bar">
               <a href="flood map 1.png" target="_blank" class="btn-fullscreen">View Full Screen Graphic ↗</a>
@@ -275,7 +301,7 @@
             
             <div class="project-overview-card">
               <h4>Coursework Report: Vegetation Indices &amp; Environmental Metrics</h4>
-              <p><strong>Course:</strong> Geographic Information Science and Systems (UC-SCI-EARL5) | Geosciences, Utrecht University<br>
+              <p><strong>Course:</strong> Geographic Information Science and Systems (UC-SCI-EARL5) | Geosciences University College Utrecht<br>
               <strong>Instructor:</strong> Britta Ricker, PhD</p>
               <p style="margin-top:0.8rem;">This independent research project analyzes urban expansion and environmental health in Valencia, Spain, from 2017 to 2024. The following report integrates satellite remote sensing data with spatial theory to assess environmental sustainability.</p>
             </div>
@@ -288,8 +314,12 @@
                 <div>
                   <h3>1. True Color Imagery Baseline (2017)</h3>
                   <p>This map establishes a 2017 snapshot of Valencia using a <strong>True Color Composite (RGB Bands 4, 3, 2)</strong> from Sentinel-2 satellite data. To generate this, I adapted JavaScript scripts within Google Earth Engine to aggregate raw, open satellite data captured during the dry summer season, filtering out cloud cover to output a clear orthomosaic.</p>
-                  <p style="margin-top:0.5rem;">An <em>orthomosaic</em> is a uniform mosaic image compiled from overlapping satellite photos. It is geometrically corrected to remove camera tilt and topographic distortions, making it accurate enough to measure true distances like a map.</p>
-                  <div class="academic-note">Neuroscience Link: True color maps mirror our visual system's trichromatic cone receptors, creating an intuitive mental map for immediate feature recognition.</div>
+                  <p>An <em>orthomosaic</em> is a uniform mosaic image compiled from overlapping satellite photos. It is geometrically corrected to remove camera tilt and topographic distortions, making it accurate enough to measure true distances like a map.</p>
+                  
+                  <div class="neuro-link">
+                    <h5>Neuroscience Connection: Trichromatic Vision Alignment</h5>
+                    <p>True Color imagery directly matches the long (red), medium (green), and short (blue) wavelength sensitivities of human cone cells. This leverages existing neural networks for object recognition, allowing the brain to quickly classify buildings and landscapes based on lifelong color associations.</p>
+                  </div>
                 </div>
                 <div class="action-bar">
                   <a href="TrueColor_2017.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
@@ -305,7 +335,7 @@
                 <div>
                   <h3>2. True Color Imagery Comparison (2024)</h3>
                   <p>This map shows Valencia in 2024, using the exact same summer timeline and 10m/pixel spatial resolution settings as the 2017 baseline. Comparing the two images highlights clear changes along the city's edges, documenting urban expansion and land use shifts over a seven-year period.</p>
-                  <p style="margin-top:0.5rem;"><strong>Why seasonality matters:</strong> Choosing the same month is essential when building orthomosaics. Comparing a winter scene with a summer scene introduces seasonal changes in foliage and sun angles, creating false trends in our change analysis.</p>
+                  <p><strong>Why seasonality matters:</strong> Choosing the same month is essential when building orthomosaics. Comparing a winter scene with a summer scene introduces seasonal changes in foliage and sun angles, creating false trends in our change analysis.</p>
                 </div>
                 <div class="action-bar">
                   <a href="TrueColor_2024.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
@@ -338,7 +368,7 @@
                 <div>
                   <h3>4. Comparative NDVI Spectrum Analysis (2024)</h3>
                   <p>The 2024 NDVI layer maps out vegetation density across modern Valencia. This type of <em>multispectral imagery</em> is invaluable for urban planning. Because satellites record wavelengths beyond human vision, they allow us to monitor environmental changes that aren't visible from the ground.</p>
-                  <p style="margin-top:0.5rem;">This analytical approach directly supports <strong>UN Sustainable Development Goal 15 (Life on Land)</strong>. It provides open, verifiable data to track urban expansion, protect surrounding ecosystems, and monitor city greening initiatives over time.</p>
+                  <p>This analytical approach directly supports <strong>UN Sustainable Development Goal 15 (Life on Land)</strong>. It provides open, verifiable data to track urban expansion, protect surrounding ecosystems, and monitor city greening initiatives over time.</p>
                 </div>
                 <div class="action-bar">
                   <a href="NDVI 2024 VAL.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
@@ -370,114 +400,85 @@
           <div class="showcase-vertical-stack">
             
             <div class="project-overview-card">
-              <h4>Supervised Pixel-Based Image Classification Pipeline</h4>
-              <p>This project explores how computers process satellite imagery, showcasing the workflow of transforming raw data into automated land-cover maps using machine learning classifiers.</p>
+              <h4>Supervised &amp; Unsupervised Land Use / Land Cover (LULC) Classification</h4>
+              <p><strong>Course Requirement:</strong> Science Park Utrecht Analysis | Instructor: Britta Ricker, PhD</p>
+              <p style="margin-top:0.8rem;">This module details how computers process satellite imagery, using machine learning classifiers to sort pixels and objects into land-cover maps. Below is the complete narrative answering all assignment evaluation criteria.</p>
             </div>
 
             <div class="showcase-map-row">
               <div class="certificate-container">
-                <img src="Performing Supervised Pixel-Based Image Classification_Certificate_06242026.png" alt="Image Classification Course Certificate" class="certificate-view">
+                <iframe class="certificate-view" src="Performing Supervised Pixel Based Image Classification_Certificate_06242026.png" title="Esri Certificate Viewer"></iframe>
               </div>
               <div class="map-details">
                 <div>
-                  <h3>Academic Certification</h3>
-                  <p><strong>Credential:</strong> Performing Supervised Pixel-Based Image Classification</p>
-                  <p style="margin-top:0.5rem;">This official certificate validates my technical training in image classification workflows. It certifies my proficiency in setting up training samples, managing multispectral satellite bands, and calculating accuracy matrices for machine learning classification models.</p>
-                </div>
-                <div class="action-bar">
-                  <a href="Performing Supervised Pixel-Based Image Classification_Certificate_06242026.pdf" target="_blank" class="btn-fullscreen">View Document File ↗</a>
+                  <h3>Esri Academic Certification</h3>
+                  <p><strong>Course Completed:</strong> Performing Supervised Pixel-Based Image Classification (Esri 2026)</p>
+                  <p>This certificate confirms my training in setting up training samples, managing multispectral bands, and calculating accuracy matrices using maximum likelihood and machine learning algorithms in ArcGIS Pro.</p>
                 </div>
               </div>
             </div>
 
-            <div class="showcase-map-row">
-              <div class="map-display-box">
-                <img src="satelite.png" alt="Raw Satellite Imagery Base" class="map-static-img">
-              </div>
-              <div class="map-details">
-                <div>
-                  <h3>1. Raw Satellite Imagery Baseline</h3>
-                  <p>The starting point: raw, unprocessed satellite data. Sensors capture information across several bands of the light spectrum. Different surface features—like asphalt, water, and trees—reflect light in unique ways, providing the data blocks needed to distinguish them.</p>
+            <div style="background:#ffffff; padding:2.5rem; border-radius:16px; border:1px solid var(--border); margin-bottom:3rem;">
+              <h3 style="margin-bottom:1.5rem; color:var(--heading-blue); font-family:'Merriweather',serif;">LULC Assignment Narrative Answers</h3>
+              
+              <div style="margin-bottom:2rem;">
+                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 1: Automated Land Cover Value &amp; Classification Paradigms</h4>
+                <p>Automated land cover classification turns massive amounts of multi-band satellite imagery into categorized maps, allowing us to track global change at scale. The difference lies in where the instruction comes from: <strong>Supervised classification</strong> relies on user-defined training samples, where the cartographer manually identifies known sites (e.g., water, urban, forest) to build a statistical profile that guides the algorithm. In contrast, <strong>Unsupervised classification</strong> uses clustering algorithms (like Iso Cluster) to group pixels entirely by their mathematical similarities in light reflection, requiring the analyst to label the categories after the processing is complete.</p>
+                
+                <div class="neuro-link">
+                  <h5>Neuroscience Connection: Top-Down vs. Bottom-Up Processing</h5>
+                  <p>This division mirrors the brain's visual processing pathways. Unsupervised classification is like bottom-up processing—relying purely on raw sensory inputs and pixel frequencies to find patterns. Supervised classification behaves like top-down processing, where internal memories, expectations, and trained schemas guide our attention to categorize what we see.</p>
                 </div>
-                <div class="action-bar">
-                  <a href="satelite.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
-                </div>
               </div>
-            </div>
 
-            <div class="showcase-map-row">
-              <div class="map-display-box">
-                <img src="pixel size.png" alt="Spatial Resolution Resolution Inspection" class="map-static-img">
+              <div style="margin-bottom:2rem;">
+                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 2: Spatial Resolution Metrics</h4>
+                <p>Using the ArcGIS Pro measure tool across individual pixels within the Science Park satellite scene, the approximate resolution is <strong>10 meters by 10 meters per pixel</strong>. This matches the standard spatial resolution of Sentinel-2's visible and near-infrared bands, meaning each pixel averages out data over a 100-square-meter footprint on the ground.</p>
               </div>
-              <div class="map-details">
-                <div>
-                  <h3>2. Spatial Resolution &amp; Grid Pixel Analysis</h3>
-                  <p>This layer evaluates <strong>spatial resolution</strong>—the actual ground size represented by each pixel. Understanding pixel dimensions is essential because it sets the detail limits of our map, determining whether small features stay sharp or blur into surrounding pixels.</p>
-                </div>
-                <div class="action-bar">
-                  <a href="pixel size.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
-                </div>
-              </div>
-            </div>
 
-            <div class="showcase-map-row">
-              <div class="map-display-box">
-                <img src="Close up Spectral Profile.png" alt="Close up Spectral Profile Analysis" class="map-static-img">
+              <div style="margin-bottom:2rem;">
+                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 3: Spectral Profile Diagnostics</h4>
+                <p>Spectral profiles plot how different land types reflect light across multiple wavelengths, creating a unique signature for each surface. By selecting distinct training regions, I mapped signatures for four key classes: <em>Water</em> drops off sharply in the infrared bands because it absorbs long wavelengths, while <em>Forest/Vegetation</em> spikes clearly in the near-infrared spectrum. <em>Urban</em> surfaces show a steady, elevated reflection profile across all bands due to asphalt and concrete, whereas <em>Open Fields</em> display a distinct soil signature that sets them apart from dense canopies.</p>
+                <div style="margin:1.5rem 0;" class="map-display-box"><img src="Close up Spectral Profile.png" alt="Spectral Profile Chart" class="map-static-img"></div>
               </div>
-              <div class="map-details">
-                <div>
-                  <h3>3. Localized Spectral Profile Diagnostics</h3>
-                  <p>This step charts <strong>spectral profiles</strong>—the unique light signature of different surface materials. Because objects reflect different amounts of light across separate color channels, plotting these values allows the computer to tell materials apart based on their light signature.</p>
-                </div>
-                <div class="action-bar">
-                  <a href="Close up Spectral Profile.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
-                </div>
-              </div>
-            </div>
 
-            <div class="showcase-map-row">
-              <div class="map-display-box">
-                <img src="unsupervised pixel based.png" alt="Unsupervised Pixel Based Classification" class="map-static-img">
-              </div>
-              <div class="map-details">
-                <div>
-                  <h3>4. Unsupervised Pixel-Based Classification</h3>
-                  <p>In an <strong>unsupervised classification</strong>, a computer algorithm automatically groups pixels based entirely on their mathematical similarity. Without human guidance, the software finds clusters of matching values and groups them into raw data classes.</p>
-                </div>
-                <div class="action-bar">
-                  <a href="unsupervised pixel based.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+              <div style="margin-bottom:2rem;">
+                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 5 &amp; 6: Unsupervised Pixel-Based vs. Object-Based Segmentation</h4>
+                <p>The pixel-based approach inspects every cell independently, often resulting in a messy "salt-and-pepper" effect where individual mismatched pixels disrupt large blocks of color. Object-based segmentation avoids this by grouping neighboring pixels with similar light profiles and shapes into cohesive objects before categorizing them. This approach creates a cleaner map that better aligns with real-world features.</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1.5rem 0;">
+                  <div class="map-display-box"><img src="unsupervised pixel based.png" alt="Unsupervised Pixel" class="map-static-img"></div>
+                  <div class="map-display-box"><img src="Unsupervised object based.png" alt="Unsupervised Object" class="map-static-img"></div>
                 </div>
               </div>
-            </div>
 
-            <div class="showcase-map-row">
-              <div class="map-display-box">
-                <img src="Unsupervised object based.png" alt="Unsupervised Object Based Segmentation" class="map-static-img">
+              <div style="margin-bottom:2rem;">
+                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 7 &amp; 8: Supervised Outputs &amp; Confusion Matrix Metrics</h4>
+                <p>The supervised object-based approach yielded the cleanest alignment with real-world features. To assess its accuracy, I ran a <strong>Confusion Matrix</strong>, which compares the computer's classifications against real reference data.</p>
+                <p>This process evaluates two main types of error: <strong>Producer Error</strong> (omission) occurs when a real feature is left out of its correct category on the map. <strong>User Error</strong> (commission) occurs when a feature is incorrectly included in a category where it doesn't belong, misleading the map reader. My matrix revealed strong accuracy for water and forest, but showed slight confusion between urban concrete structures and bare soil fields.</p>
+                <div style="margin:1.5rem 0;" class="map-display-box"><img src="Supervised object based.png" alt="Supervised Object Classification Map" class="map-static-img"></div>
               </div>
-              <div class="map-details">
-                <div>
-                  <h3>5. Unsupervised Object-Based Segmentation</h3>
-                  <p>Moving beyond single pixels, <strong>Object-Based Segmentation</strong> groups neighboring pixels with similar colors, textures, and shapes into distinct "objects." This method better mimics how human eyes see, grouping pixels into shapes like fields or building footprints before categorizing them.</p>
-                </div>
-                <div class="action-bar">
-                  <a href="Unsupervised object based.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
-                </div>
-              </div>
-            </div>
 
-            <div class="showcase-map-row">
-              <div class="map-display-box">
-                <img src="Supervised object based.png" alt="Supervised Object Based Final Map" class="map-static-img">
-              </div>
-              <div class="map-details">
-                <div>
-                  <h3>6. Supervised Object-Based Classification</h3>
-                  <p>The final, most accurate step. By training the algorithm with real-world examples—manually pointing out known houses, water bodies, and forests—the computer learns to accurately categorize all the segmented shapes across the whole region, creating a clean land-cover map.</p>
-                </div>
-                <div class="action-bar">
-                  <a href="Supervised object based.png" target="_blank" class="btn-fullscreen">View Full Screen ↗</a>
+              <div style="margin-bottom:2rem;">
+                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 9: NDVI &amp; Visual Communication Theory</h4>
+                <p>The ideal color scheme for displaying NDVI uses a graded Red-Yellow-Green diverging ramp. This palette is highly effective for visual communication because humans have strong, culturally ingrained associations with these colors: red signals stress or non-vegetated terrain, yellow marks transition zones, and vibrant green indicates dense, healthy canopy. The primary target audience includes urban planners, environmental researchers, and local policymakers who need to assess ecosystem health quickly without decoding complex technical values.</p>
+                
+                <div class="technical-warning">
+                  <h5>Technological Limitations Notice</h5>
+                  <p>During our final lab session, unexpected software crashes and band-matching errors in the raster calculator prevented the system from rendering the final localized NDVI image layer for Science Park Utrecht. Rather than using broken files, this profile openly acknowledges those technical hurdles, while presenting the underlying logic and optimal color theory required for accurate environmental communication.</p>
                 </div>
               </div>
+
+              <div style="margin-bottom:1rem;">
+                <h4 style="color:var(--text); font-size:1.1rem; margin-bottom:0.5rem;">Question 10: Methodological Trade-offs &amp; Data Anomalies</h4>
+                <p>Each classification method has unique strengths and weaknesses:</p>
+                <ul style="margin-left:1.5rem; margin-bottom:1rem; display:grid; gap:0.5rem;">
+                  <li><strong>Unsupervised Pixel:</strong> Fast and unbiased, but creates messy, fragmented maps that are difficult to interpret.</li>
+                  <li><strong>Unsupervised Object:</strong> Effectively groups distinct land features, but sometimes merges separate boundaries if they share similar colors.</li>
+                  <li><strong>Supervised Object-Based:</strong> Offers the highest overall accuracy by combining human knowledge with spatial shapes, though it requires significant time and manual effort to build clean training samples.</li>
+                </ul>
+                <p>Anomalies in our dataset included strong reflections from metallic roofs at the Science Park, which the computer often misclassified as water bodies due to their unique light signatures across certain bands. This highlight shows why human oversight remains essential when auditing automated machine learning models.</p>
+              </div>
+
             </div>
 
           </div>
